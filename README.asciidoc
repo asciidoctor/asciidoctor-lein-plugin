@@ -46,6 +46,17 @@ To configure lein-asciidoc, put the `:asciidoc` parameter in the file `project.c
 
 Each configuration parameter could be a keyword (ex: `:sources`) or a string (ex: `"sources"`). You can combine this approaches if you need.
 
+*:sources*:: List of input sources. It is possible to use a single source or a vector of sources. To configure this parameter, you could also use a link:http://en.wikipedia.org/wiki/Glob_(programming)[Glob Patterns]. Default value: `"src/asciidoc/*.asciidoc"`
+            
+*:to-dir*:: Target directory. All generated files will be placed in this directory.
+
+*:compact*:: Compact the output by removing blank lines. Possible values: true or false.
+
+*:header-footer*:: Suppress or allow the document header and footer in the output.
+.Example
+NOTE:
+It will render only `<body>` content for HTML mode.
+
 == License ==
 
 Copyright © 2014 Vladislav Bauer
