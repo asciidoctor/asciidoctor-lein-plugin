@@ -50,6 +50,8 @@ Each configuration parameter could be a keyword (ex: `:sources`) or a string (ex
 
 *:sources*:: List of input sources. It is possible to use a single source or a vector of sources. To configure this parameter, you could also use a link:http://en.wikipedia.org/wiki/Glob_(programming)[Glob Patterns]. Default value: `"src/asciidoc/*.asciidoc"`
 
+*:excludes*:: List of glob patterns to prevent processing of some asciidoc files. It is also possible to use both variants: single pattern and collection of patterns.
+
 *:to-dir*:: Target directory. All generated files will be placed in this directory. By default, all output will be placed in the same directory.
 
 *:compact*:: Compact the output by removing blank lines. Possible values: true or false (default).

@@ -45,6 +45,9 @@
   ([c k d] (to-coll (sget c k d)))
   ([c k] (scoll c k [])))
 
+(defn- scan-files [patterns]
+  (set (mapcat glob/glob patterns)))
+
 
 ; Internal API : Configuration
 
@@ -54,6 +57,7 @@
 
 (defn- project-configs [prj] (scoll prj :asciidoc))
 (defn- config-sources [conf] (scoll conf :sources [DEF_SOURCES]))
+(defn- config-excludes [conf] (scoll conf :excludes))
 (defn- config-extract-css [conf] (sbool conf :extract-css))
 (defn- config-to-dir [conf] (sget conf :to-dir))
 (defn- config-format [conf] (name (sget conf :format DEF_FORMAT)))
@@ -117,17 +121,20 @@
 
 ; Internal API : Renderer / Processor
 
-(defn- process-source [asciidoctor pattern config]
-  (let [sources (glob/glob pattern)
-        options (asciidoctor-config config)]
-    (doseq [source sources]
-      (.convertFile asciidoctor source options)
-      (if (config-extract-css config)
-        (copy-resources source config))
-      (log "Processed asciidoc file: %s" source))))
+(defn- source-list [config]
+  (let [sources (scan-files (config-sources config))
+        excludes (scan-files (config-excludes config))]
+    (remove (fn [s] (some #(.compareTo % s) excludes)) sources)))
+
+(defn- process-source [asciidoctor source config]
+  (let [options (asciidoctor-config config)]
+    (.convertFile asciidoctor source options)
+    (if (config-extract-css config)
+      (copy-resources source config))
+    (log "Processed asciidoc file: %s" source)))
 
 (defn- process-config [asciidoctor config]
-  (let [sources (config-sources config)]
+  (let [sources (source-list config)]
     (doseq [source sources]
       (process-source asciidoctor source config))))
 
