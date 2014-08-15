@@ -62,7 +62,7 @@
 <div class="listingblock">
 <div class="title">project.clj</div>
 <div class="content">
-<pre class="CodeRay"><code class="clojure language-clojure"><span class="symbol">:plugins</span> [[lein-asciidoc <span class="string"><span class="delimiter">&quot;</span><span class="content">0.1.1</span><span class="delimiter">&quot;</span></span>]]</code></pre>
+<pre class="CodeRay"><code class="clojure language-clojure"><span class="symbol">:plugins</span> [[lein-asciidoc <span class="string"><span class="delimiter">&quot;</span><span class="content">0.1.2</span><span class="delimiter">&quot;</span></span>]]</code></pre>
 </div>
 </div>
 </div>
@@ -99,6 +99,10 @@
 <dt class="hdlist1"><strong>:sources</strong></dt>
 <dd>
 <p>List of input sources. It is possible to use a single source or a vector of sources. To configure this parameter, you could also use a <a href="http://en.wikipedia.org/wiki/Glob_(programming)">Glob Patterns</a>. Default value: <code>"src/asciidoc/*.asciidoc"</code></p>
+</dd>
+<dt class="hdlist1"><strong>:excludes</strong></dt>
+<dd>
+<p>List of glob patterns to prevent processing of some asciidoc files. It is also possible to use both variants: single pattern and collection of patterns.</p>
 </dd>
 <dt class="hdlist1"><strong>:to-dir</strong></dt>
 <dd>
