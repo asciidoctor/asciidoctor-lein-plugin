@@ -48,14 +48,26 @@ Each configuration parameter could be a keyword (ex: `:sources`) or a string (ex
 
 *:sources*:: List of input sources. It is possible to use a single source or a vector of sources. To configure this parameter, you could also use a link:http://en.wikipedia.org/wiki/Glob_(programming)[Glob Patterns]. Default value: `"src/asciidoc/*.asciidoc"`
             
-*:to-dir*:: Target directory. All generated files will be placed in this directory.
+*:to-dir*:: Target directory. All generated files will be placed in this directory. By default, all output will be placed in the same directory.
 
-*:compact*:: Compact the output by removing blank lines. Possible values: true or false.
+*:compact*:: Compact the output by removing blank lines. Possible values: true or false (default).
 
-*:header-footer*:: Suppress or allow the document header and footer in the output.
-.Example
-NOTE:
-It will render only `<body>` content for HTML mode.
+*:header-footer*:: Suppress or allow the document header and footer in the output. Possible values: true (default) or false. For example, it renders only `<body>` content in HTML mode.
+
+*:footer*:: Suppress or allow the document footer in the output. Possible values: true or false (default). For example, it suppresses footer element in HTML mode.
+
+*:toc*:: Add table of contents. Possible values: true or false. By default, ToC is not enabled.
+
+*:title*:: Configure title of document. For example, it defines `<title>` element in HTML mode.
+
+*:format*:: Backend output file format: `:html5`, `:docbook45` and `:docbook5` supported out of the box. You can also use the backend alias names `:html` (aliased to `:html5`) or `:docbook` (aliased to `:docbook5`). Defaults to `:html`. It is also possible to use keywords or strings as values: `:html` and `"html"` is the same.
+
+*:doctype*:: Document type: `:article`, `:book`, `:manpage` or `:inline`. Sets the root element when using the docbook format and the style class on the HTML body element when using the html format. The `:book` document type allows multiple level-0 section titles in a single document. The `:manpage` document type enables parsing of metadata necessary to produce a manpage. The `:inline` document type allows the content of a single paragraph to be formatted and returned without wrapping it in a containing element. Defaults to `:article`.
+
+*:source-highlight*:: Enable syntax hightlighter for source codes. Possible values: true (default) or false.
+
+*:extract-css*:: Extract CSS resources in the output directory. Default `asciidoctor.css` will be extracted always. CSS file for syntax hightlighter will be extracted if `:source-highlight` parameter is turned on.
+
 
 == License ==
 
