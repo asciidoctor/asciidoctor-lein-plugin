@@ -22,7 +22,7 @@ To enable lein-asciidoc for your project, put the following line in the :plugins
 [source,clojure]
 .project.clj
 ----
-:plugins [[lein-asciidoc "0.1.1"]]
+:plugins [[lein-asciidoc "0.1.2"]]
 ----
 
 
