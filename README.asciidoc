@@ -71,6 +71,16 @@ Each configuration parameter could be a keyword (ex: `:sources`) or a string (ex
 *:extract-css*:: Extract CSS resources in the output directory. Default `asciidoctor.css` will be extracted always. CSS file for syntax hightlighter (`coderay-asciidoctor.css`) will be extracted if `:source-highlight` parameter is turned on.
 
 
+== Usage ==
+
+To run lein-asciidoc plugin, you need to execute the following command in the command line:
+
+[source,bash]
+----
+lein asciidoc
+----
+
+
 == Example ==
 
 [source,clojure]
