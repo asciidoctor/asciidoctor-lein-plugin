@@ -155,6 +155,22 @@
 <pre class="CodeRay"><code class="bash language-bash">lein asciidoc</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>To enable this plugin at the compile stage (for example, during <code>lein compile</code> or <code>lein uberjar</code>), use the following Leiningen hook:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay"><code class="clojure language-clojure"><span class="symbol">:hooks</span> [leiningen.asciidoc]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To show help for CLI, use:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay"><code class="bash language-bash">lein help asciidoc</code></pre>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -202,6 +218,13 @@
 <p>CSS files <code>asciidoctor.css</code> and <code>coderay-asciidoctor.css</code> will be extracted in the same output directory.</p>
 </li>
 </ul>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p><a href="http://vbauer.github.io/lein-asciidoc">GitHub Pages</a> for this project were also generated using lein-asciidoc.</p>
+</div>
+</blockquote>
 </div>
 </div>
 </div>
