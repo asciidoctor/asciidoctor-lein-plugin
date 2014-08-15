@@ -18,7 +18,7 @@
   (println (apply format msg args)))
 
 (defn- to-coll [elem]
-  (if (coll? elem) elem [elem]))
+  (if (sequential? elem) elem [elem]))
 
 (defn- add-opt [c k v]
   (if (not (nil? v))
@@ -132,8 +132,9 @@
       (process-source asciidoctor source config))))
 
 (defn- proc [project & args]
-  (let [asciidoctor (Asciidoctor$Factory/create)]
-    (doseq [config (project-configs project)]
+  (let [asciidoctor (Asciidoctor$Factory/create)
+        configs (project-configs project)]
+    (doseq [config configs]
       (process-config asciidoctor config))
     (.shutdown asciidoctor)))
 
