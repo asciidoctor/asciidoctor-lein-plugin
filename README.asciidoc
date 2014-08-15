@@ -12,6 +12,8 @@ link:http://powerman.name/doc/asciidoc[AsciiDoc] is a human-readable document fo
 
 link:http://asciidoctor.org[Asciidoctor] is a fast text processor and publishing toolchain for converting AsciiDoc content to HTML5, DocBook 5 (or 4.5) and other formats. Asciidoctor is written in Ruby, but it has a binding to work on JVM using link:http://jruby.org[JRuby] - link:https://github.com/asciidoctor/asciidoctorj[AsciidoctorJ].
 
+link:https://github.com/vbauer/lein-asciidoc[lein-asciidoc] is a link:http://leiningen.org[Leiningen] plugin that allows to generate documentation from asciidoc files in different formats using AsciidoctorJ.
+
 
 == Setup ==
 
@@ -66,7 +68,32 @@ Each configuration parameter could be a keyword (ex: `:sources`) or a string (ex
 
 *:source-highlight*:: Enable syntax hightlighter for source codes. Possible values: true (default) or false.
 
-*:extract-css*:: Extract CSS resources in the output directory. Default `asciidoctor.css` will be extracted always. CSS file for syntax hightlighter will be extracted if `:source-highlight` parameter is turned on.
+*:extract-css*:: Extract CSS resources in the output directory. Default `asciidoctor.css` will be extracted always. CSS file for syntax hightlighter (`coderay-asciidoctor.css`) will be extracted if `:source-highlight` parameter is turned on.
+
+
+== Example ==
+
+[source,clojure]
+.project.clj
+----
+:asciidoc [{:sources ["doc/*.ascii"]
+            :to-dir "doc-generated"
+            :compact true
+            :format :html5
+            :extract-css true
+            :toc true
+            :title "Just an example"
+            :source-highlight true}]
+----
+
+.As result you will get the following:
+* Directory `doc` will be scanned for input sources using pattern `*.ascii`.
+* All found sources will be converted into HTML files (`:html5`) in the output directory `doc-generated`:
+** All spaces in the output text files will be trimmed.
+** Table of contents will be placed at the left part of each HTML document.
+** Each generated HTML document will have the title `Just an example`.
+** Syntax hightlighter will be applied on each code block.
+* CSS files `asciidoctor.css` and `coderay-asciidoctor.css` will be extracted in the same output directory.
 
 
 == License ==
