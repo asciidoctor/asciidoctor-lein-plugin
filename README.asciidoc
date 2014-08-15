@@ -1,29 +1,59 @@
 
-= Introduction =
-
-link:http://powerman.name/doc/asciidoc[AsciiDoc] is a human-readable document format, semantically equivalent to DocBook XML, but using plain-text mark-up conventions. AsciiDoc documents can be created using any text editor and read "as-is", or rendered to HTML or any other format.
-
-link:http://asciidoctor.org[Asciidoctor] is a fast text processor and publishing toolchain for converting AsciiDoc content to HTML5, DocBook 5 (or 4.5) and other formats. Asciidoctor is written in Ruby, but it has a binding to work on JVM using link:http://jruby.org[JRuby] - link:https://github.com/asciidoctor/asciidoctorj[AsciidoctorJ].
-
-
-= Installation =
-
-To enable lein-asciidoc for your project, put the following in the :plugins vector of your project.clj file:
+= lein-asciidoc =
 
 image:https://clojars.org/lein-asciidoc/latest-version.svg["Latest version", link="https://clojars.org/lein-asciidoc"]
 
 image:https://travis-ci.org/vbauer/lein-asciidoc.svg?branch=master["Build Status", link="https://travis-ci.org/vbauer/lein-asciidoc"]
 image:http://jarkeeper.com/vbauer/lein-asciidoc/status.png["Dependencies Status", link="http://jarkeeper.com/vbauer/lein-asciidoc"]
 
+== Introduction ==
 
-= License =
+link:http://powerman.name/doc/asciidoc[AsciiDoc] is a human-readable document format, semantically equivalent to DocBook XML, but using plain-text mark-up conventions. AsciiDoc documents can be created using any text editor and read "as-is", or rendered to HTML or any other format.
+
+link:http://asciidoctor.org[Asciidoctor] is a fast text processor and publishing toolchain for converting AsciiDoc content to HTML5, DocBook 5 (or 4.5) and other formats. Asciidoctor is written in Ruby, but it has a binding to work on JVM using link:http://jruby.org[JRuby] - link:https://github.com/asciidoctor/asciidoctorj[AsciidoctorJ].
+
+
+== Setup ==
+
+To enable lein-asciidoc for your project, put the following line in the :plugins vector of your project.clj file:
+
+[source,clojure]
+.project.clj
+----
+:plugins [[lein-asciidoc "0.1.0"]]
+----
+
+
+== Configuration ==
+
+To configure lein-asciidoc, put the `:asciidoc` parameter in the file `project.clj`. It could be a single configuration (simple map) or a collection of configurations (for multiple configuration).
+
+[source,clojure]
+.project.clj
+----
+; single configuration
+:asciidoc {:sources "doc/*.ascii"}
+
+; multiple configurations
+:asciidoc [{:sources ["doc1/*.adoc" "doc2/*.adoc"]
+            :format :html5}
+           {:sources "doc/*.ascii"
+            :format :html}]
+----
+
+
+== Configuration parameters ==
+
+Each configuration parameter could be a keyword (ex: `:sources`) or a string (ex: `"sources"`). You can combine this approaches if you need.
+
+== License ==
 
 Copyright © 2014 Vladislav Bauer
 
 Distributed under the Eclipse Public License, the same as Clojure.
 
 
-= Might also like =
+== Might also like ==
 
 * link:https://github.com/vbauer/lein-jshint[lein-jshint] - a Leiningen plugin for running javascript code through JSHint.
 * link:https://github.com/vbauer/lein-jslint[lein-jslint] - a Leiningen plugin for running javascript code through JSLint.
