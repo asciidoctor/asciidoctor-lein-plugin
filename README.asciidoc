@@ -74,10 +74,21 @@ Each configuration parameter could be a keyword (ex: `:sources`) or a string (ex
 == Usage ==
 
 To run lein-asciidoc plugin, you need to execute the following command in the command line:
-
 [source,bash]
 ----
 lein asciidoc
+----
+
+To enable this plugin at the compile stage (for example, during `lein compile` or `lein uberjar`), use the following Leiningen hook:
+[source,clojure]
+----
+:hooks [leiningen.asciidoc]
+----
+
+To show help for CLI, use:
+[source,bash]
+----
+lein help asciidoc
 ----
 
 
@@ -104,6 +115,12 @@ lein asciidoc
 ** Each generated HTML document will have the title `Just an example`.
 ** Syntax hightlighter will be applied on each code block.
 * CSS files `asciidoctor.css` and `coderay-asciidoctor.css` will be extracted in the same output directory.
+
+[quote]
+____
+link:http://vbauer.github.io/lein-asciidoc[GitHub Pages] for this project were also generated using lein-asciidoc.
+____
+
 
 ==  Useful links ==
 
