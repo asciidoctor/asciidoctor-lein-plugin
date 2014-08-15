@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.0.preview.7">
+<title>lein-asciidoc</title>
+<link rel="stylesheet" href="./asciidoctor.css">
+<link rel="stylesheet" href="./coderay-asciidoctor.css">
+</head>
+<body class="article toc2 toc-left">
+<div id="header">
+<h1>lein-asciidoc</h1>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_introduction">Introduction</a></li>
+<li><a href="#_setup">Setup</a></li>
+<li><a href="#_configuration">Configuration</a></li>
+<li><a href="#_configuration_parameters">Configuration parameters</a></li>
+<li><a href="#_usage">Usage</a></li>
+<li><a href="#_example">Example</a></li>
+<li><a href="#_useful_links">Useful links</a></li>
+<li><a href="#_license">License</a></li>
+<li><a href="#_might_also_like">Might also like</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p><span class="image"><a class="image" href="https://clojars.org/lein-asciidoc"><img src="https://clojars.org/lein-asciidoc/latest-version.svg" alt="Latest version"></a></span></p>
+</div>
+<div class="paragraph">
+<p><span class="image"><a class="image" href="https://travis-ci.org/vbauer/lein-asciidoc"><img src="https://travis-ci.org/vbauer/lein-asciidoc.svg?branch=master" alt="Build Status"></a></span>
+<span class="image"><a class="image" href="http://jarkeeper.com/vbauer/lein-asciidoc"><img src="http://jarkeeper.com/vbauer/lein-asciidoc/status.png" alt="Dependencies Status"></a></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_introduction">Introduction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="http://www.methods.co.nz/asciidoc/">AsciiDoc</a> is a human-readable document format, semantically equivalent to DocBook XML, but using plain-text mark-up conventions. AsciiDoc documents can be created using any text editor and read "as-is", or rendered to HTML or any other format.</p>
+</div>
+<div class="paragraph">
+<p><a href="http://asciidoctor.org">Asciidoctor</a> is a fast text processor and publishing toolchain for converting AsciiDoc content to HTML5, DocBook 5 (or 4.5) and other formats. Asciidoctor is written in Ruby, but it has a binding to work on JVM using <a href="http://jruby.org">JRuby</a> - <a href="https://github.com/asciidoctor/asciidoctorj">AsciidoctorJ</a>.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/vbauer/lein-asciidoc">lein-asciidoc</a> is a <a href="http://leiningen.org">Leiningen</a> plugin that allows to generate documentation from asciidoc files in different formats using AsciidoctorJ.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_setup">Setup</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To enable lein-asciidoc for your project, put the following line in the :plugins vector of your project.clj file:</p>
+</div>
+<div class="listingblock">
+<div class="title">project.clj</div>
+<div class="content">
+<pre class="CodeRay"><code class="clojure language-clojure"><span class="symbol">:plugins</span> [[lein-asciidoc <span class="string"><span class="delimiter">&quot;</span><span class="content">0.1.1</span><span class="delimiter">&quot;</span></span>]]</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_configuration">Configuration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To configure lein-asciidoc, put the <code>:asciidoc</code> parameter in the file <code>project.clj</code>. It could be a single configuration (simple map) or a collection of configurations (for multiple configuration).</p>
+</div>
+<div class="listingblock">
+<div class="title">project.clj</div>
+<div class="content">
+<pre class="CodeRay"><code class="clojure language-clojure"><span class="comment">; single configuration</span>
+<span class="symbol">:asciidoc</span> {<span class="symbol">:sources</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">doc/*.ascii</span><span class="delimiter">&quot;</span></span>}
+
+<span class="comment">; multiple configurations</span>
+<span class="symbol">:asciidoc</span> [{<span class="symbol">:sources</span> [<span class="string"><span class="delimiter">&quot;</span><span class="content">doc1/*.adoc</span><span class="delimiter">&quot;</span></span> <span class="string"><span class="delimiter">&quot;</span><span class="content">doc2/*.adoc</span><span class="delimiter">&quot;</span></span>]
+            <span class="symbol">:format</span> <span class="symbol">:html5</span>}
+           {<span class="symbol">:sources</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">doc/*.ascii</span><span class="delimiter">&quot;</span></span>
+            <span class="symbol">:format</span> <span class="symbol">:html</span>}]</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_configuration_parameters">Configuration parameters</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Each configuration parameter could be a keyword (ex: <code>:sources</code>) or a string (ex: <code>"sources"</code>). You can combine this approaches if you need.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong>:sources</strong></dt>
+<dd>
+<p>List of input sources. It is possible to use a single source or a vector of sources. To configure this parameter, you could also use a <a href="http://en.wikipedia.org/wiki/Glob_(programming)">Glob Patterns</a>. Default value: <code>"src/asciidoc/*.asciidoc"</code></p>
+</dd>
+<dt class="hdlist1"><strong>:to-dir</strong></dt>
+<dd>
+<p>Target directory. All generated files will be placed in this directory. By default, all output will be placed in the same directory.</p>
+</dd>
+<dt class="hdlist1"><strong>:compact</strong></dt>
+<dd>
+<p>Compact the output by removing blank lines. Possible values: true or false (default).</p>
+</dd>
+<dt class="hdlist1"><strong>:header-footer</strong></dt>
+<dd>
+<p>Suppress or allow the document header and footer in the output. Possible values: true (default) or false. For example, it renders only <code>&lt;body&gt;</code> content in HTML mode.</p>
+</dd>
+<dt class="hdlist1"><strong>:footer</strong></dt>
+<dd>
+<p>Suppress or allow the document footer in the output. Possible values: true or false (default). For example, it suppresses footer element in HTML mode.</p>
+</dd>
+<dt class="hdlist1"><strong>:toc</strong></dt>
+<dd>
+<p>Add table of contents. Possible values: true or false. By default, ToC is not enabled.</p>
+</dd>
+<dt class="hdlist1"><strong>:title</strong></dt>
+<dd>
+<p>Configure title of document. For example, it defines <code>&lt;title&gt;</code> element in HTML mode.</p>
+</dd>
+<dt class="hdlist1"><strong>:format</strong></dt>
+<dd>
+<p>Backend output file format: <code>:html5</code>, <code>:docbook45</code> and <code>:docbook5</code> supported out of the box. You can also use the backend alias names <code>:html</code> (aliased to <code>:html5</code>) or <code>:docbook</code> (aliased to <code>:docbook5</code>). Defaults to <code>:html</code>. It is also possible to use keywords or strings as values: <code>:html</code> and <code>"html"</code> is the same.</p>
+</dd>
+<dt class="hdlist1"><strong>:doctype</strong></dt>
+<dd>
+<p>Document type: <code>:article</code>, <code>:book</code>, <code>:manpage</code> or <code>:inline</code>. Sets the root element when using the docbook format and the style class on the HTML body element when using the html format. The <code>:book</code> document type allows multiple level-0 section titles in a single document. The <code>:manpage</code> document type enables parsing of metadata necessary to produce a manpage. The <code>:inline</code> document type allows the content of a single paragraph to be formatted and returned without wrapping it in a containing element. Defaults to <code>:article</code>.</p>
+</dd>
+<dt class="hdlist1"><strong>:source-highlight</strong></dt>
+<dd>
+<p>Enable syntax hightlighter for source codes. Possible values: true (default) or false.</p>
+</dd>
+<dt class="hdlist1"><strong>:extract-css</strong></dt>
+<dd>
+<p>Extract CSS resources in the output directory. Default <code>asciidoctor.css</code> will be extracted always. CSS file for syntax hightlighter (<code>coderay-asciidoctor.css</code>) will be extracted if <code>:source-highlight</code> parameter is turned on.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_usage">Usage</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To run lein-asciidoc plugin, you need to execute the following command in the command line:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay"><code class="bash language-bash">lein asciidoc</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_example">Example</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="title">project.clj</div>
+<div class="content">
+<pre class="CodeRay"><code class="clojure language-clojure"><span class="symbol">:asciidoc</span> [{<span class="symbol">:sources</span> [<span class="string"><span class="delimiter">&quot;</span><span class="content">doc/*.ascii</span><span class="delimiter">&quot;</span></span>]
+            <span class="symbol">:to-dir</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">doc-generated</span><span class="delimiter">&quot;</span></span>
+            <span class="symbol">:compact</span> <span class="predefined-constant">true</span>
+            <span class="symbol">:format</span> <span class="symbol">:html5</span>
+            <span class="symbol">:extract-css</span> <span class="predefined-constant">true</span>
+            <span class="symbol">:toc</span> <span class="predefined-constant">true</span>
+            <span class="symbol">:title</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Just an example</span><span class="delimiter">&quot;</span></span>
+            <span class="symbol">:source-highlight</span> <span class="predefined-constant">true</span>}]</code></pre>
+</div>
+</div>
+<div class="ulist">
+<div class="title">As result you will get the following:</div>
+<ul>
+<li>
+<p>Directory <code>doc</code> will be scanned for input sources using pattern <code>*.ascii</code>.</p>
+</li>
+<li>
+<p>All found sources will be converted into HTML files (<code>:html5</code>) in the output directory <code>doc-generated</code>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>All spaces in the output text files will be trimmed.</p>
+</li>
+<li>
+<p>Table of contents will be placed at the left part of each HTML document.</p>
+</li>
+<li>
+<p>Each generated HTML document will have the title <code>Just an example</code>.</p>
+</li>
+<li>
+<p>Syntax hightlighter will be applied on each code block.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>CSS files <code>asciidoctor.css</code> and <code>coderay-asciidoctor.css</code> will be extracted in the same output directory.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_useful_links">Useful links</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://www.methods.co.nz/asciidoc/">Full AsciiDoc documentation</a></p>
+</li>
+<li>
+<p><a href="http://powerman.name/doc/asciidoc">AsciiDoc cheatsheet</a></p>
+</li>
+<li>
+<p><a href="http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/">AsciiDoc Syntax Quick Reference</a></p>
+</li>
+<li>
+<p><a href="http://asciidoctor.org/docs/asciidoc-writers-guide/">AsciiDoc Writer’s Guide</a></p>
+</li>
+<li>
+<p><a href="http://www.compileonline.com/try_asciidoc_online.php">Try AsciiDoc Online</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_license">License</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Copyright © 2014 Vladislav Bauer</p>
+</div>
+<div class="paragraph">
+<p>Distributed under the Eclipse Public License, the same as Clojure.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_might_also_like">Might also like</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/vbauer/lein-jshint">lein-jshint</a> - a Leiningen plugin for running javascript code through JSHint.</p>
+</li>
+<li>
+<p><a href="https://github.com/vbauer/lein-jslint">lein-jslint</a> - a Leiningen plugin for running javascript code through JSLint.</p>
+</li>
+<li>
+<p><a href="https://github.com/vbauer/lein-plantuml">lein-plantuml</a> - a Leiningen plugin for generating UML diagrams using PluntUML.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
