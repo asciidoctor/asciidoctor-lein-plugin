@@ -1,7 +1,20 @@
 
-License
-=======
+= Introduction =
+
+link:http://powerman.name/doc/asciidoc[AsciiDoc] is a human-readable document format, semantically equivalent to DocBook XML, but using plain-text mark-up conventions. AsciiDoc documents can be created using any text editor and read "as-is", or rendered to HTML or any other format.
+
+link:http://asciidoctor.org[Asciidoctor] is a fast text processor and publishing toolchain for converting AsciiDoc content to HTML5, DocBook 5 (or 4.5) and other formats. Asciidoctor is written in Ruby, but it has a binding to work on JVM using link:http://jruby.org[JRuby] - link:https://github.com/asciidoctor/asciidoctorj[AsciidoctorJ].
+
+
+= License =
 
 Copyright © 2014 Vladislav Bauer
 
 Distributed under the Eclipse Public License, the same as Clojure.
+
+
+= Might also like =
+
+* link:https://github.com/vbauer/lein-jshint[lein-jshint] - a Leiningen plugin for running javascript code through JSHint.
+* link:https://github.com/vbauer/lein-jslint[lein-jslint] - a Leiningen plugin for running javascript code through JSLint.
+* link:https://github.com/vbauer/lein-plantuml[lein-plantuml] - a Leiningen plugin for generating UML diagrams using PluntUML.
