@@ -8,7 +8,7 @@ image:http://jarkeeper.com/vbauer/lein-asciidoc/status.png["Dependencies Status"
 
 == Introduction ==
 
-link:http://powerman.name/doc/asciidoc[AsciiDoc] is a human-readable document format, semantically equivalent to DocBook XML, but using plain-text mark-up conventions. AsciiDoc documents can be created using any text editor and read "as-is", or rendered to HTML or any other format.
+link:http://www.methods.co.nz/asciidoc/[AsciiDoc] is a human-readable document format, semantically equivalent to DocBook XML, but using plain-text mark-up conventions. AsciiDoc documents can be created using any text editor and read "as-is", or rendered to HTML or any other format.
 
 link:http://asciidoctor.org[Asciidoctor] is a fast text processor and publishing toolchain for converting AsciiDoc content to HTML5, DocBook 5 (or 4.5) and other formats. Asciidoctor is written in Ruby, but it has a binding to work on JVM using link:http://jruby.org[JRuby] - link:https://github.com/asciidoctor/asciidoctorj[AsciidoctorJ].
 
@@ -104,6 +104,14 @@ lein asciidoc
 ** Each generated HTML document will have the title `Just an example`.
 ** Syntax hightlighter will be applied on each code block.
 * CSS files `asciidoctor.css` and `coderay-asciidoctor.css` will be extracted in the same output directory.
+
+==  Useful links ==
+
+* link:http://www.methods.co.nz/asciidoc/[Full AsciiDoc documentation]
+* link:http://powerman.name/doc/asciidoc[AsciiDoc cheatsheet]
+* link:http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/[AsciiDoc Syntax Quick Reference]
+* link:http://asciidoctor.org/docs/asciidoc-writers-guide/[AsciiDoc Writer’s Guide]
+* link:http://www.compileonline.com/try_asciidoc_online.php[Try AsciiDoc Online]
 
 
 == License ==
