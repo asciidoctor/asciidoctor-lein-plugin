@@ -1,4 +1,4 @@
-(defproject lein-asciidoc "0.1.3-SNAPSHOT"
+(defproject lein-asciidoc "0.1.3"
   :description "A Leiningen plugin for generating documentation using Asciidoctor."
   :url "https://github.com/vbauer/lein-asciidoc"
   :license {:name "Eclipse Public License"
