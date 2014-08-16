@@ -72,7 +72,7 @@ Each configuration parameter could be a keyword (ex: `:sources`) or a string (ex
 
 *:footer*:: Suppress or allow the document footer in the output. Possible values: true or false (default). For example, it suppresses footer element in HTML mode.
 
-*:toc*:: Add table of contents. Possible values: :auto, :left. :rights. By default, ToC is not enabled.
+*:toc*:: Add table of contents. Possible values: :auto, :left, :right. By default, ToC is not enabled.
 
 *:toc-title*:: Allows you to change the title of the TOC. Default value: "Table of Contents".
 
