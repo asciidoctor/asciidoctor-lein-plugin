@@ -15,7 +15,7 @@ link:http://asciidoctor.org[Asciidoctor] is a fast text processor and publishing
 link:https://github.com/vbauer/lein-asciidoc[lein-asciidoc] is a link:http://leiningen.org[Leiningen] plugin that allows to generate documentation from asciidoc files in different formats using AsciidoctorJ.
 
 
-== Supported formats ==
+=== Supported formats ===
 
 The Asciidoctor processor parses an AsciiDoc document and converts it to a variety of formats:
 
@@ -56,7 +56,7 @@ To configure lein-asciidoc, put the `:asciidoc` parameter in the file `project.c
 ----
 
 
-== Configuration parameters ==
+=== Configuration parameters ===
 
 Each configuration parameter could be a keyword (ex: `:sources`) or a string (ex: `"sources"`). You can combine this approaches if you need.
 
@@ -78,7 +78,7 @@ Each configuration parameter could be a keyword (ex: `:sources`) or a string (ex
 
 *:toc-levels*:: By default, the TOC will display level 1 and level 2 section titles. You can set a different level with the toclevels attribute. Possible values: 1, 2 (default), 3, 4, 5.
 
-*:title*:: Configure title of document. For example, it defines `<title>` element in HTML mode.
+*:title*:: Configure the title of document. For example, it defines `<title>` element in HTML mode.
 
 *:format*:: Backend output file format: `:html5`, `:docbook45` and `:docbook5` supported out of the box. You can also use the backend alias names `:html` (aliased to `:html5`) or `:docbook` (aliased to `:docbook5`). Defaults to `:html`. It is also possible to use keywords or strings as values: `:html` and `"html"` is the same.
 
@@ -154,6 +154,11 @@ ____
 Copyright © 2014 Vladislav Bauer
 
 Distributed under the Eclipse Public License, the same as Clojure.
+
+
+== Thanks to ==
+
+link:http://asciidoctor.org[Asciidoctor] & link:https://github.com/asciidoctor/asciidoctorj[AsciidoctorJ] developers for really great projects.
 
 
 == Might also like ==
