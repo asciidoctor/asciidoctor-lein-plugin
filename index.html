@@ -16,6 +16,7 @@
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
 <li><a href="#_introduction">Introduction</a></li>
+<li><a href="#_supported_formats">Supported formats</a></li>
 <li><a href="#_setup">Setup</a></li>
 <li><a href="#_configuration">Configuration</a></li>
 <li><a href="#_configuration_parameters">Configuration parameters</a></li>
@@ -54,6 +55,33 @@
 </div>
 </div>
 <div class="sect1">
+<h2 id="_supported_formats">Supported formats</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Asciidoctor processor parses an AsciiDoc document and converts it to a variety of formats:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>html5</strong>, <strong>html</strong> - HTML 5 markup. Default backend.</p>
+</li>
+<li>
+<p><strong>xhtml5</strong> - XHTML 5 markup.</p>
+</li>
+<li>
+<p><strong>dockbook5</strong>, <strong>docbook</strong> - DocBook XML 5.0 markup.</p>
+</li>
+<li>
+<p><strong>docbook45</strong> - DocBook XML 4.5 markup.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If no backend is indicated, the processor uses the default backend (html5).</p>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="_setup">Setup</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -62,7 +90,7 @@
 <div class="listingblock">
 <div class="title">project.clj</div>
 <div class="content">
-<pre class="CodeRay"><code class="clojure language-clojure"><span class="symbol">:plugins</span> [[lein-asciidoc <span class="string"><span class="delimiter">&quot;</span><span class="content">0.1.2</span><span class="delimiter">&quot;</span></span>]]</code></pre>
+<pre class="CodeRay"><code class="clojure language-clojure"><span class="symbol">:plugins</span> [[lein-asciidoc <span class="string"><span class="delimiter">&quot;</span><span class="content">0.1.3</span><span class="delimiter">&quot;</span></span>]]</code></pre>
 </div>
 </div>
 </div>
@@ -122,7 +150,15 @@
 </dd>
 <dt class="hdlist1"><strong>:toc</strong></dt>
 <dd>
-<p>Add table of contents. Possible values: true or false. By default, ToC is not enabled.</p>
+<p>Add table of contents. Possible values: :auto, :left. :rights. By default, ToC is not enabled.</p>
+</dd>
+<dt class="hdlist1"><strong>:toc-title</strong></dt>
+<dd>
+<p>Allows you to change the title of the TOC. Default value: "Table of Contents".</p>
+</dd>
+<dt class="hdlist1"><strong>:toc-levels</strong></dt>
+<dd>
+<p>By default, the TOC will display level 1 and level 2 section titles. You can set a different level with the toclevels attribute. Possible values: 1, 2 (default), 3, 4, 5.</p>
 </dd>
 <dt class="hdlist1"><strong>:title</strong></dt>
 <dd>
@@ -188,7 +224,7 @@
             <span class="symbol">:compact</span> <span class="predefined-constant">true</span>
             <span class="symbol">:format</span> <span class="symbol">:html5</span>
             <span class="symbol">:extract-css</span> <span class="predefined-constant">true</span>
-            <span class="symbol">:toc</span> <span class="predefined-constant">true</span>
+            <span class="symbol">:toc</span> <span class="symbol">:left</span>
             <span class="symbol">:title</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Just an example</span><span class="delimiter">&quot;</span></span>
             <span class="symbol">:source-highlight</span> <span class="predefined-constant">true</span>}]</code></pre>
 </div>
