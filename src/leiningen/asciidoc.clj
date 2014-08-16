@@ -67,15 +67,20 @@
 
 (defn- config-source-highlight [conf] (sbool conf :source-highlight))
 (defn- config-no-footer [conf] (not (sbool conf :footer false)))
-(defn- config-toc [conf] (sbool conf :toc false))
+(defn- config-toc [conf] (sget conf :toc))
+(defn- config-toc-title [conf] (sget conf :toc-title))
+(defn- config-toc-levels [conf] (sget conf :toc-levels))
 (defn- config-title [conf] (sget conf :title))
 
 (defn- asciidoctor-attrs [conf]
   (let [attrs (HashMap.)]
     (if (config-source-highlight conf) (add-opt attrs :source-highlighter DEF_SOURCE_HIGHTLIGHTER))
     (if (config-no-footer conf) (add-opt attrs :nofooter true))
-    (if (config-toc conf) (add-opt attrs :toc "toc"))
-    (add-opt attrs :title (config-title conf))
+    (doto attrs
+      (add-opt :toc (config-toc conf))
+      (add-opt :title (config-title conf))
+      (add-opt :toc-title (config-toc-title conf))
+      (add-opt :toclevels (config-toc-levels conf)))
     attrs))
 
 (defn- asciidoctor-config [conf]
