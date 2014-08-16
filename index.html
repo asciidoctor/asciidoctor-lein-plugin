@@ -16,14 +16,23 @@
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
 <li><a href="#_introduction">Introduction</a></li>
+<li>
+<ul class="sectlevel2">
 <li><a href="#_supported_formats">Supported formats</a></li>
+</ul>
+</li>
 <li><a href="#_setup">Setup</a></li>
 <li><a href="#_configuration">Configuration</a></li>
+<li>
+<ul class="sectlevel2">
 <li><a href="#_configuration_parameters">Configuration parameters</a></li>
+</ul>
+</li>
 <li><a href="#_usage">Usage</a></li>
 <li><a href="#_example">Example</a></li>
 <li><a href="#_useful_links">Useful links</a></li>
 <li><a href="#_license">License</a></li>
+<li><a href="#_thanks_to">Thanks to</a></li>
 <li><a href="#_might_also_like">Might also like</a></li>
 </ul>
 </div>
@@ -52,11 +61,8 @@
 <div class="paragraph">
 <p><a href="https://github.com/vbauer/lein-asciidoc">lein-asciidoc</a> is a <a href="http://leiningen.org">Leiningen</a> plugin that allows to generate documentation from asciidoc files in different formats using AsciidoctorJ.</p>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_supported_formats">Supported formats</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_supported_formats">Supported formats</h3>
 <div class="paragraph">
 <p>The Asciidoctor processor parses an AsciiDoc document and converts it to a variety of formats:</p>
 </div>
@@ -78,6 +84,7 @@
 </div>
 <div class="paragraph">
 <p>If no backend is indicated, the processor uses the default backend (html5).</p>
+</div>
 </div>
 </div>
 </div>
@@ -114,11 +121,8 @@
             <span class="symbol">:format</span> <span class="symbol">:html</span>}]</code></pre>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_configuration_parameters">Configuration parameters</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_configuration_parameters">Configuration parameters</h3>
 <div class="paragraph">
 <p>Each configuration parameter could be a keyword (ex: <code>:sources</code>) or a string (ex: <code>"sources"</code>). You can combine this approaches if you need.</p>
 </div>
@@ -150,7 +154,7 @@
 </dd>
 <dt class="hdlist1"><strong>:toc</strong></dt>
 <dd>
-<p>Add table of contents. Possible values: :auto, :left. :rights. By default, ToC is not enabled.</p>
+<p>Add table of contents. Possible values: :auto, :left, :right. By default, ToC is not enabled.</p>
 </dd>
 <dt class="hdlist1"><strong>:toc-title</strong></dt>
 <dd>
@@ -162,7 +166,7 @@
 </dd>
 <dt class="hdlist1"><strong>:title</strong></dt>
 <dd>
-<p>Configure title of document. For example, it defines <code>&lt;title&gt;</code> element in HTML mode.</p>
+<p>Configure the title of document. For example, it defines <code>&lt;title&gt;</code> element in HTML mode.</p>
 </dd>
 <dt class="hdlist1"><strong>:format</strong></dt>
 <dd>
@@ -181,6 +185,7 @@
 <p>Extract CSS resources in the output directory. Default <code>asciidoctor.css</code> will be extracted always. CSS file for syntax hightlighter (<code>coderay-asciidoctor.css</code>) will be extracted if <code>:source-highlight</code> parameter is turned on.</p>
 </dd>
 </dl>
+</div>
 </div>
 </div>
 </div>
@@ -300,6 +305,14 @@
 </div>
 <div class="paragraph">
 <p>Distributed under the Eclipse Public License, the same as Clojure.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_thanks_to">Thanks to</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="http://asciidoctor.org">Asciidoctor</a> &amp; <a href="https://github.com/asciidoctor/asciidoctorj">AsciidoctorJ</a> developers for really great projects.</p>
 </div>
 </div>
 </div>
