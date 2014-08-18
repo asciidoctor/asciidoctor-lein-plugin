@@ -71,11 +71,13 @@
 (defn- config-toc-title [conf] (sget conf :toc-title))
 (defn- config-toc-levels [conf] (sget conf :toc-levels))
 (defn- config-title [conf] (sget conf :title))
+(defn- config-no-title [conf] (sbool conf :no-title true))
 
 (defn- asciidoctor-attrs [conf]
   (let [attrs (HashMap.)]
     (if (config-source-highlight conf) (add-opt attrs :source-highlighter DEF_SOURCE_HIGHTLIGHTER))
     (if (config-no-footer conf) (add-opt attrs :nofooter true))
+    (if (config-no-title conf) (add-opt attrs :notitle true))
     (doto attrs
       (add-opt :toc (config-toc conf))
       (add-opt :title (config-title conf))
@@ -167,6 +169,7 @@
     :toc-title         - Change title of the TOC.
     :toc-levels        - Set a deep of ToC levels. Possible values: 1, 2 (default), 3, 4, 5.
     :title             - Configure the title of document.
+    :no-title          - Toggles the display of a document’s title.
     :format            - Backend output file format: :html, :html5, :docbook, :docbook45, :docbook5
     :doctype           - Document type: :article, :book, :manpage, :inline.
     :source-highlight  - Enable syntax hightlighter for source codes.
