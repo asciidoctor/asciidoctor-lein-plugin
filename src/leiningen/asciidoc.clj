@@ -71,7 +71,7 @@
 (defn- config-toc-title [conf] (sget conf :toc-title))
 (defn- config-toc-levels [conf] (sget conf :toc-levels))
 (defn- config-title [conf] (sget conf :title))
-(defn- config-no-title [conf] (sbool conf :no-title true))
+(defn- config-no-title [conf] (sbool conf :no-title false))
 
 (defn- asciidoctor-attrs [conf]
   (let [attrs (HashMap.)]
