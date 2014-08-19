@@ -4,8 +4,9 @@
 <meta charset="UTF-8">
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 1.5.0.preview.7">
+<meta name="generator" content="Asciidoctor 1.5.0">
 <title>lein-asciidoc</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic|Noto+Serif:400,400italic,700,700italic|Droid+Sans+Mono:400">
 <link rel="stylesheet" href="./asciidoctor.css">
 <link rel="stylesheet" href="./coderay-asciidoctor.css">
 </head>
@@ -15,15 +16,13 @@
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_introduction">Introduction</a></li>
-<li>
+<li><a href="#_introduction">Introduction</a>
 <ul class="sectlevel2">
 <li><a href="#_supported_formats">Supported formats</a></li>
 </ul>
 </li>
 <li><a href="#_setup">Setup</a></li>
-<li><a href="#_configuration">Configuration</a></li>
-<li>
+<li><a href="#_configuration">Configuration</a>
 <ul class="sectlevel2">
 <li><a href="#_configuration_parameters">Configuration parameters</a></li>
 </ul>
@@ -97,7 +96,7 @@
 <div class="listingblock">
 <div class="title">project.clj</div>
 <div class="content">
-<pre class="CodeRay"><code class="clojure language-clojure"><span class="symbol">:plugins</span> [[lein-asciidoc <span class="string"><span class="delimiter">&quot;</span><span class="content">0.1.5</span><span class="delimiter">&quot;</span></span>]]</code></pre>
+<pre class="CodeRay highlight"><code data-lang="clojure"><span class="symbol">:plugins</span> [[lein-asciidoc <span class="string"><span class="delimiter">&quot;</span><span class="content">0.1.6</span><span class="delimiter">&quot;</span></span>]]</code></pre>
 </div>
 </div>
 </div>
@@ -111,7 +110,7 @@
 <div class="listingblock">
 <div class="title">project.clj</div>
 <div class="content">
-<pre class="CodeRay"><code class="clojure language-clojure"><span class="comment">; single configuration</span>
+<pre class="CodeRay highlight"><code data-lang="clojure"><span class="comment">; single configuration</span>
 <span class="symbol">:asciidoc</span> {<span class="symbol">:sources</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">doc/*.ascii</span><span class="delimiter">&quot;</span></span>}
 
 <span class="comment">; multiple configurations</span>
@@ -147,6 +146,10 @@
 <dt class="hdlist1"><strong>:header-footer</strong></dt>
 <dd>
 <p>Suppress or allow the document header and footer in the output. Possible values: true (default) or false. For example, it renders only <code>&lt;body&gt;</code> content in HTML mode.</p>
+</dd>
+<dt class="hdlist1"><strong>:header</strong></dt>
+<dd>
+<p>Suppresses the rendering of the header. Possible values: true (default) or false.</p>
 </dd>
 <dt class="hdlist1"><strong>:footer</strong></dt>
 <dd>
@@ -201,7 +204,7 @@
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay"><code class="bash language-bash">lein asciidoc</code></pre>
+<pre class="CodeRay highlight"><code data-lang="bash">lein asciidoc</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -209,7 +212,7 @@
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay"><code class="clojure language-clojure"><span class="symbol">:hooks</span> [leiningen.asciidoc]</code></pre>
+<pre class="CodeRay highlight"><code data-lang="clojure"><span class="symbol">:hooks</span> [leiningen.asciidoc]</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -217,7 +220,7 @@
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay"><code class="bash language-bash">lein help asciidoc</code></pre>
+<pre class="CodeRay highlight"><code data-lang="bash">lein help asciidoc</code></pre>
 </div>
 </div>
 </div>
@@ -228,7 +231,7 @@
 <div class="listingblock">
 <div class="title">project.clj</div>
 <div class="content">
-<pre class="CodeRay"><code class="clojure language-clojure"><span class="symbol">:asciidoc</span> [{<span class="symbol">:sources</span> [<span class="string"><span class="delimiter">&quot;</span><span class="content">doc/*.ascii</span><span class="delimiter">&quot;</span></span>]
+<pre class="CodeRay highlight"><code data-lang="clojure"><span class="symbol">:asciidoc</span> [{<span class="symbol">:sources</span> [<span class="string"><span class="delimiter">&quot;</span><span class="content">doc/*.ascii</span><span class="delimiter">&quot;</span></span>]
             <span class="symbol">:to-dir</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">doc-generated</span><span class="delimiter">&quot;</span></span>
             <span class="symbol">:compact</span> <span class="predefined-constant">true</span>
             <span class="symbol">:format</span> <span class="symbol">:html5</span>
