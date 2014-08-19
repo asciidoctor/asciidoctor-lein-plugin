@@ -34,7 +34,7 @@ To enable lein-asciidoc for your project, put the following line in the :plugins
 [source,clojure]
 .project.clj
 ----
-:plugins [[lein-asciidoc "0.1.5"]]
+:plugins [[lein-asciidoc "0.1.6"]]
 ----
 
 
@@ -69,6 +69,8 @@ Each configuration parameter could be a keyword (ex: `:sources`) or a string (ex
 *:compact*:: Compact the output by removing blank lines. Possible values: true or false (default).
 
 *:header-footer*:: Suppress or allow the document header and footer in the output. Possible values: true (default) or false. For example, it renders only `<body>` content in HTML mode.
+
+*:header*:: Suppresses the rendering of the header. Possible values: true (default) or false.
 
 *:footer*:: Suppress or allow the document footer in the output. Possible values: true or false (default). For example, it suppresses footer element in HTML mode.
 
