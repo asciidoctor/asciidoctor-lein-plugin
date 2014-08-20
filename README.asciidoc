@@ -147,7 +147,7 @@ link:http://vbauer.github.io/lein-asciidoc[GitHub Pages] for this project were a
 
 === Example project ===
 
-Just clone current repository and try to play with `example` project for better understanding how to use lein-asciidoc.
+Just clone current repository and try to play with link:https://github.com/vbauer/lein-asciidoc/tree/master/example[`example`] project for better understanding how to use lein-asciidoc.
 
 
 ==  Useful links ==
