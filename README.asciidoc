@@ -115,7 +115,9 @@ lein help asciidoc
 ----
 
 
-== Example ==
+== Examples ==
+
+=== Detailed example ===
 
 [source,clojure]
 .project.clj
@@ -139,10 +141,13 @@ lein help asciidoc
 ** Syntax hightlighter will be applied on each code block.
 * CSS files `asciidoctor.css` and `coderay-asciidoctor.css` will be extracted in the same output directory.
 
-[quote]
-____
+=== GitHub Pages ===
+
 link:http://vbauer.github.io/lein-asciidoc[GitHub Pages] for this project were also generated using lein-asciidoc.
-____
+
+=== Example project ===
+
+Just clone current repository and try to play with `example` project for better understanding how to use lein-asciidoc.
 
 
 ==  Useful links ==

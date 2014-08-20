@@ -1,0 +1,59 @@
+:author: Vladislav Bauer
+:email: bauer.vlad@gmail.com
+= Example of usage lein-asciidoc =
+
+[quote,'Winston Churchill']
+____
+The length of this document defends it well against the risk of its being read.
+____
+
+
+== Introduction ==
+
+It is a simple example to show generation of HTML documentation using link:https://github.com/vbauer/lein-asciidoc[lein-asciidoc].
+
+
+== Configuration options ==
+
+Options are already configured, you check them in `project.clj` file:
+[source,clojure]
+.project.clj
+----
+:asciidoc {:sources "README.asciidoc"
+           :to-dir "generated"
+           :extract-css true
+           :source-highlight true
+           :toc :left}
+----
+
+You could play with options later to see different results.
+
+
+== Usage ==
+
+Run the following command in the current directory (`"example"`):
+
+[source,bash]
+.Console
+----
+lein asciidoc
+----
+
+It shouldn't take too much time.
+
+
+== Results ==
+
+In case of successful completion, you should see the following message in console:
+
+[source,bash]
+.Console
+----
+Processed asciidoc file: ./README.asciidoc
+----
+
+New `"generated"` directory with 3 files should be created:
+
+* ./generated/index.html
+* ./generated/asciidoctor.css
+* ./generated/coderay-asciidoctor.css
