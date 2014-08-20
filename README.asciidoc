@@ -1,4 +1,5 @@
-
+:author: Vladislav Bauer
+:email: bauer.vlad@gmail.com
 = lein-asciidoc =
 
 image:https://clojars.org/lein-asciidoc/latest-version.svg["Latest version", link="https://clojars.org/lein-asciidoc"]
