@@ -15,6 +15,8 @@ link:http://asciidoctor.org[Asciidoctor] is a fast text processor and publishing
 
 link:https://github.com/vbauer/lein-asciidoc[lein-asciidoc] is a link:http://leiningen.org[Leiningen] plugin that allows to generate documentation from asciidoc files in different formats using AsciidoctorJ.
 
+image::https://raw.githubusercontent.com/vbauer/lein-asciidoc/master/misc/example.png[]
+
 
 === Supported formats ===
 
