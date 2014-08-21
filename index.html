@@ -21,14 +21,11 @@
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#_introduction">Introduction</a>
-<ul class="sectlevel2">
-<li><a href="#_supported_formats">Supported formats</a></li>
-</ul>
-</li>
+<li><a href="#_introduction">Introduction</a></li>
 <li><a href="#_setup">Setup</a></li>
 <li><a href="#_configuration">Configuration</a>
 <ul class="sectlevel2">
+<li><a href="#_supported_formats">Supported formats</a></li>
 <li><a href="#_configuration_parameters">Configuration parameters</a></li>
 </ul>
 </li>
@@ -41,9 +38,9 @@
 </ul>
 </li>
 <li><a href="#_useful_links">Useful links</a></li>
-<li><a href="#_license">License</a></li>
 <li><a href="#_thanks_to">Thanks to</a></li>
 <li><a href="#_might_also_like">Might also like</a></li>
+<li><a href="#_license">License</a></li>
 </ul>
 </div>
 </div>
@@ -74,32 +71,6 @@
 <div class="imageblock">
 <div class="content">
 <img src="https://raw.githubusercontent.com/vbauer/lein-asciidoc/master/misc/example.png" alt="example">
-</div>
-<div class="title">Figure 1. Tyger tyger</div>
-</div>
-<div class="sect2">
-<h3 id="_supported_formats">Supported formats</h3>
-<div class="paragraph">
-<p>The Asciidoctor processor parses an AsciiDoc document and converts it to a variety of formats:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>html5</strong>, <strong>html</strong> - HTML 5 markup. Default backend.</p>
-</li>
-<li>
-<p><strong>xhtml5</strong> - XHTML 5 markup.</p>
-</li>
-<li>
-<p><strong>dockbook5</strong>, <strong>docbook</strong> - DocBook XML 5.0 markup.</p>
-</li>
-<li>
-<p><strong>docbook45</strong> - DocBook XML 4.5 markup.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>If no backend is indicated, the processor uses the default backend (html5).</p>
 </div>
 </div>
 </div>
@@ -135,6 +106,31 @@
             <span class="symbol">:format</span> <span class="symbol">:html5</span>}
            {<span class="symbol">:sources</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">doc/*.ascii</span><span class="delimiter">&quot;</span></span>
             <span class="symbol">:format</span> <span class="symbol">:html</span>}]</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_supported_formats">Supported formats</h3>
+<div class="paragraph">
+<p>The Asciidoctor processor parses an AsciiDoc document and converts it to a variety of formats:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>html5</strong>, <strong>html</strong> - HTML 5 markup. Default backend.</p>
+</li>
+<li>
+<p><strong>xhtml5</strong> - XHTML 5 markup.</p>
+</li>
+<li>
+<p><strong>dockbook5</strong>, <strong>docbook</strong> - DocBook XML 5.0 markup.</p>
+</li>
+<li>
+<p><strong>docbook45</strong> - DocBook XML 4.5 markup.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If no backend is indicated, the processor uses the default backend (html5).</p>
 </div>
 </div>
 <div class="sect2">
@@ -330,17 +326,6 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="_license">License</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Copyright © 2014 Vladislav Bauer</p>
-</div>
-<div class="paragraph">
-<p>Distributed under the Eclipse Public License, the same as Clojure.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
 <h2 id="_thanks_to">Thanks to</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -363,6 +348,17 @@
 <p><a href="https://github.com/vbauer/lein-plantuml">lein-plantuml</a> - a Leiningen plugin for generating UML diagrams using PluntUML.</p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_license">License</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Copyright © 2014 Vladislav Bauer</p>
+</div>
+<div class="paragraph">
+<p>Distributed under the Eclipse Public License, the same as Clojure.</p>
 </div>
 </div>
 </div>
