@@ -7,6 +7,7 @@ image:https://clojars.org/lein-asciidoc/latest-version.svg["Latest version", lin
 image:https://travis-ci.org/vbauer/lein-asciidoc.svg?branch=master["Build Status", link="https://travis-ci.org/vbauer/lein-asciidoc"]
 image:http://jarkeeper.com/vbauer/lein-asciidoc/status.png["Dependencies Status", link="http://jarkeeper.com/vbauer/lein-asciidoc"]
 
+
 == Introduction ==
 
 link:http://www.methods.co.nz/asciidoc/[AsciiDoc] is a human-readable document format, semantically equivalent to DocBook XML, but using plain-text mark-up conventions. AsciiDoc documents can be created using any text editor and read "as-is", or rendered to HTML or any other format.
@@ -16,18 +17,6 @@ link:http://asciidoctor.org[Asciidoctor] is a fast text processor and publishing
 link:https://github.com/vbauer/lein-asciidoc[lein-asciidoc] is a link:http://leiningen.org[Leiningen] plugin that allows to generate documentation from asciidoc files in different formats using AsciidoctorJ.
 
 image::https://raw.githubusercontent.com/vbauer/lein-asciidoc/master/misc/example.png[]
-
-
-=== Supported formats ===
-
-The Asciidoctor processor parses an AsciiDoc document and converts it to a variety of formats:
-
-* *html5*, *html* - HTML 5 markup. Default backend.
-* *xhtml5* - XHTML 5 markup.
-* *dockbook5*, *docbook* - DocBook XML 5.0 markup.
-* *docbook45* - DocBook XML 4.5 markup.
-
-If no backend is indicated, the processor uses the default backend (html5).
 
 
 == Setup ==
@@ -57,6 +46,18 @@ To configure lein-asciidoc, put the `:asciidoc` parameter in the file `project.c
            {:sources "doc/*.ascii"
             :format :html}]
 ----
+
+
+=== Supported formats ===
+
+The Asciidoctor processor parses an AsciiDoc document and converts it to a variety of formats:
+
+* *html5*, *html* - HTML 5 markup. Default backend.
+* *xhtml5* - XHTML 5 markup.
+* *dockbook5*, *docbook* - DocBook XML 5.0 markup.
+* *docbook45* - DocBook XML 4.5 markup.
+
+If no backend is indicated, the processor uses the default backend (html5).
 
 
 === Configuration parameters ===
@@ -161,13 +162,6 @@ Just clone current repository and try to play with link:https://github.com/vbaue
 * link:http://www.compileonline.com/try_asciidoc_online.php[Try AsciiDoc Online]
 
 
-== License ==
-
-Copyright © 2014 Vladislav Bauer
-
-Distributed under the Eclipse Public License, the same as Clojure.
-
-
 == Thanks to ==
 
 link:http://asciidoctor.org[Asciidoctor] & link:https://github.com/asciidoctor/asciidoctorj[AsciidoctorJ] developers for really great projects.
@@ -178,3 +172,10 @@ link:http://asciidoctor.org[Asciidoctor] & link:https://github.com/asciidoctor/a
 * link:https://github.com/vbauer/lein-jshint[lein-jshint] - a Leiningen plugin for running javascript code through JSHint.
 * link:https://github.com/vbauer/lein-jslint[lein-jslint] - a Leiningen plugin for running javascript code through JSLint.
 * link:https://github.com/vbauer/lein-plantuml[lein-plantuml] - a Leiningen plugin for generating UML diagrams using PluntUML.
+
+
+== License ==
+
+Copyright © 2014 Vladislav Bauer
+
+Distributed under the Eclipse Public License, the same as Clojure.
