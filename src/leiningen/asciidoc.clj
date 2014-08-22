@@ -14,11 +14,10 @@
 
 ; Internal API: Common
 
-(defn- log [msg & args]
-  (println (apply format msg args)))
-
-(defn- to-coll [elem]
-  (if (sequential? elem) elem [elem]))
+(defn- scan-files [patterns] (set (mapcat glob/glob patterns)))
+(defn- log [msg & args] (println (apply format msg args)))
+(defn- find-first [coll f] (first (filter f coll)))
+(defn- to-coll [elem] (if (sequential? elem) elem [elem]))
 
 (defn- add-opt [c k v]
   (if (not (nil? v))
@@ -37,68 +36,75 @@
    (let [r (sget c k)]
      (if (nil? r) v r))))
 
-(defn- sbool
-  ([c k d] (boolean (sget c k d)))
-  ([c k] (sbool c k false)))
+(defn- sname [c k d]
+  (let [r (sget c k d)]
+    (when-not (nil? r) (name r))))
 
-(defn- scoll
-  ([c k d] (to-coll (sget c k d)))
-  ([c k] (scoll c k [])))
-
-(defn- scan-files [patterns]
-  (set (mapcat glob/glob patterns)))
+(defn- sbool [c k d] (boolean (sget c k d)))
+(defn- scoll [c k d] (to-coll (sget c k d)))
 
 
 ; Internal API : Configuration
 
-(def ^:private DEF_FORMAT :html)
-(def ^:private DEF_SOURCE_HIGHTLIGHTER "coderay")
-(def ^:private DEF_SOURCES "src/asciidoc/*.asciidoc")
+; Format of the transformation table for reading configuration:
+; Parameter name   Converter   [Default value]
+(def ^:private DEF_CONF
+  [; Root configuration
+   [:asciidoc           scoll                               ]
 
-(defn- project-configs [prj] (scoll prj :asciidoc))
-(defn- config-sources [conf] (scoll conf :sources [DEF_SOURCES]))
-(defn- config-excludes [conf] (scoll conf :excludes))
-(defn- config-extract-css [conf] (sbool conf :extract-css))
-(defn- config-to-dir [conf] (sget conf :to-dir))
-(defn- config-format [conf] (name (sget conf :format DEF_FORMAT)))
-(defn- config-compact [conf] (sbool conf :compact))
-(defn- config-doctype [conf] (sget conf :doctype))
-(defn- config-header-footer [conf] (sbool conf :header-footer true))
+   ; Configuration options
+   [:sources            scoll      "src/asciidoc/*.asciidoc"]
+   [:excludes           scoll                               ]
+   [:extract-css        sbool                               ]
+   [:to-dir             sget                                ]
+   [:format             sname      :html                    ]
+   [:compact            sbool                               ]
+   [:doctype            sname                               ]
+   [:header-footer      sbool      true                     ]
 
-(defn- config-source-highlight [conf] (sbool conf :source-highlight))
-(defn- config-no-header [conf] (not (sbool conf :header true)))
-(defn- config-no-footer [conf] (not (sbool conf :footer false)))
-(defn- config-toc [conf] (sget conf :toc))
-(defn- config-toc-title [conf] (sget conf :toc-title))
-(defn- config-toc-levels [conf] (sget conf :toc-levels))
-(defn- config-title [conf] (sget conf :title))
-(defn- config-no-title [conf] (sbool conf :no-title false))
+   ; Configuration attributes
+   [:source-highlight   sbool                               ]
+   [:toc                sget                                ]
+   [:toc-title          sget                                ]
+   [:toc-levels         sget                                ]
+   [:title              sget                                ]
+   [:no-title           sbool      false                    ]
+   [:no-header          sbool      false                    ]
+   [:no-footer          sbool      true                     ]])
+
+
+(defn- config [conf k]
+  (let [scanner (fn [e] (= k (nth e 0)))
+        params (find-first DEF_CONF scanner)
+        func (nth params 1)
+        defarg (nth params 2 nil)]
+    (func conf k defarg)))
 
 (defn- asciidoctor-attrs [conf]
   (let [attrs (HashMap.)]
-    (if (config-source-highlight conf) (add-opt attrs :source-highlighter DEF_SOURCE_HIGHTLIGHTER))
-    (if (config-no-header conf) (add-opt attrs :noheader true))
-    (if (config-no-footer conf) (add-opt attrs :nofooter true))
-    (if (config-no-title conf) (add-opt attrs :notitle true))
+    (if (config conf :source-highlight) (add-opt attrs :source-highlighter "coderay"))
+    (if (config conf :no-header) (add-opt attrs :noheader true))
+    (if (config conf :no-footer) (add-opt attrs :nofooter true))
+    (if (config conf :no-title) (add-opt attrs :notitle true))
     (doto attrs
-      (add-opt :toc (config-toc conf))
-      (add-opt :title (config-title conf))
-      (add-opt :toc-title (config-toc-title conf))
-      (add-opt :toclevels (config-toc-levels conf)))
+      (add-opt :toc (config conf :toc))
+      (add-opt :title (config conf :title))
+      (add-opt :toc-title (config conf :toc-title))
+      (add-opt :toclevels (config conf :toc-levels)))
     attrs))
 
 (defn- asciidoctor-config [conf]
-  (let [config (HashMap.)]
-    (if-let [to-dir (config-to-dir conf)]
+  (let [result (HashMap.)]
+    (if-let [to-dir (config conf :to-dir)]
       (do
         (fs/mkdirs to-dir)
-        (add-opt config :to_dir to-dir)))
-    (doto config
+        (add-opt result :to_dir to-dir)))
+    (doto result
       (add-opt :attributes (asciidoctor-attrs conf))
-      (add-opt :header_footer (config-header-footer conf))
-      (add-opt :doctype (config-doctype conf))
-      (add-opt :compact (config-compact conf))
-      (add-opt :backend (config-format conf)))))
+      (add-opt :header_footer (config conf :header-footer))
+      (add-opt :doctype (config conf :doctype))
+      (add-opt :compact (config conf :compact))
+      (add-opt :backend (config conf :format)))))
 
 
 ; Internal API : Resources
@@ -122,36 +128,36 @@
          (slurp res))))))
 
 (defn- copy-resources [source options]
-  (let [dir (or (config-to-dir options) (fs/parent source))]
+  (let [dir (or (config options :to-dir) (fs/parent source))]
     (copy-resource RESOURCE_ASCIIDOCTOR_DEFAULT dir RESOURCE_ASCIIDOCTOR)
-    (if (config-source-highlight options)
+    (if (config options :source-highlight)
       (copy-resource RESOURCE_CODERAY_ASCIIDOCTOR dir RESOURCE_CODERAY_ASCIIDOCTOR))))
 
 
 ; Internal API : Renderer / Processor
 
-(defn- source-list [config]
-  (let [sources (scan-files (config-sources config))
-        excludes (scan-files (config-excludes config))]
+(defn- source-list [conf]
+  (let [sources (scan-files (config conf :sources))
+        excludes (scan-files (config conf :excludes))]
     (remove (fn [s] (some #(.compareTo % s) excludes)) sources)))
 
-(defn- process-source [asciidoctor source config]
-  (let [options (asciidoctor-config config)]
+(defn- process-source [asciidoctor source conf]
+  (let [options (asciidoctor-config conf)]
     (.convertFile asciidoctor source options)
-    (if (config-extract-css config)
-      (copy-resources source config))
+    (if (config conf :extract-css)
+      (copy-resources source conf))
     (log "Processed asciidoc file: %s" source)))
 
-(defn- process-config [asciidoctor config]
-  (let [sources (source-list config)]
+(defn- process-config [asciidoctor conf]
+  (let [sources (source-list conf)]
     (doseq [source sources]
-      (process-source asciidoctor source config))))
+      (process-source asciidoctor source conf))))
 
 (defn- proc [project & args]
   (let [asciidoctor (Asciidoctor$Factory/create)
-        configs (project-configs project)]
-    (doseq [config configs]
-      (process-config asciidoctor config))
+        configs (config project :asciidoc)]
+    (doseq [conf configs]
+      (process-config asciidoctor conf))
     (.shutdown asciidoctor)))
 
 
