@@ -1,5 +1,5 @@
 (ns ^{:author "Vladislav Bauer"}
-  leiningen.asciidoc
+  leiningen.asciidoctor
   (:import (org.asciidoctor Asciidoctor$Factory Options Attributes)
            (java.util HashMap))
   (:require [leiningen.core.main :as main]
@@ -17,7 +17,7 @@
 (defn- scan-files [patterns] (set (mapcat glob/glob patterns)))
 (defn- log [msg & args] (println (apply format msg args)))
 (defn- find-first [coll f] (first (filter f coll)))
-(defn- to-coll [elem] (if (sequential? elem) elem [elem]))
+(defn- to-coll [e] (if (nil? e) [] (if (sequential? e) e [e])))
 
 (defn- add-opt [c k v]
   (if (not (nil? v))
@@ -50,27 +50,27 @@
 ; Parameter name   Converter   [Default value]
 (def ^:private DEF_CONF
   [; Root configuration
-   [:asciidoc           scoll                               ]
+   [:asciidoctor        scoll                            ]
 
    ; Configuration options
-   [:sources            scoll      "src/asciidoc/*.asciidoc"]
-   [:excludes           scoll                               ]
-   [:extract-css        sbool                               ]
-   [:to-dir             sget                                ]
-   [:format             sname      :html                    ]
-   [:compact            sbool                               ]
-   [:doctype            sname                               ]
-   [:header-footer      sbool      true                     ]
+   [:sources            scoll      "src/asciidoc/*.adoc" ]
+   [:excludes           scoll                            ]
+   [:extract-css        sbool                            ]
+   [:to-dir             sget                             ]
+   [:format             sname      :html                 ]
+   [:compact            sbool                            ]
+   [:doctype            sname                            ]
+   [:header-footer      sbool      true                  ]
 
    ; Configuration attributes
-   [:source-highlight   sbool                               ]
-   [:toc                sget                                ]
-   [:toc-title          sget                                ]
-   [:toc-levels         sget                                ]
-   [:title              sget                                ]
-   [:no-title           sbool      false                    ]
-   [:no-header          sbool      false                    ]
-   [:no-footer          sbool      true                     ]])
+   [:source-highlight   sbool                            ]
+   [:toc                sget                             ]
+   [:toc-title          sget                             ]
+   [:toc-levels         sget                             ]
+   [:title              sget                             ]
+   [:no-title           sbool      false                 ]
+   [:no-header          sbool      false                 ]
+   [:no-footer          sbool      true                  ]])
 
 
 (defn- config [conf k]
@@ -141,32 +141,32 @@
         excludes (scan-files (config conf :excludes))]
     (remove (fn [s] (some #(.compareTo % s) excludes)) sources)))
 
-(defn- process-source [asciidoctor source conf]
+(defn- process-source [engine source conf]
   (let [options (asciidoctor-config conf)]
-    (.convertFile asciidoctor source options)
+    (.convertFile engine source options)
     (if (config conf :extract-css)
       (copy-resources source conf))
     (log "Processed asciidoc file: %s" source)))
 
-(defn- process-config [asciidoctor conf]
+(defn- process-config [engine conf]
   (let [sources (source-list conf)]
     (doseq [source sources]
-      (process-source asciidoctor source conf))))
+      (process-source engine source conf))))
 
 (defn- proc [project & args]
-  (let [asciidoctor (Asciidoctor$Factory/create)
-        configs (config project :asciidoc)]
+  (let [engine (Asciidoctor$Factory/create)
+        configs (config project :asciidoctor)]
     (doseq [conf configs]
-      (process-config asciidoctor conf))
-    (.shutdown asciidoctor)))
+      (process-config engine conf))
+    (.shutdown engine)))
 
 
 ; External API: Leiningen tasks
 
-(defn asciidoc
+(defn asciidoctor
   "Generate documentation using Asciidoctor.
 
-  Configure :asciidoc configuration parameter in the file project.clj using following options:
+  Configure :asciidoctor configuration parameter in the file project.clj using following options:
     :sources           - List of glob patterns to define input sources.
     :excludes          - List of glob patterns to prevent processing of some asciidoc files.
     :to-dir            - Target directory.
@@ -184,7 +184,7 @@
     :extract-css       - Extract CSS resources in the output directory.
 
   Usage:
-    lein asciidoc"
+    lein asciidoctor"
 
   [project & args]
   (proc project args))

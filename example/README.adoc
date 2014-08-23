@@ -19,11 +19,11 @@ Options are already configured, you check them in `project.clj` file:
 [source,clojure]
 .project.clj
 ----
-:asciidoc {:sources "README.adoc"
-           :to-dir "generated"
-           :extract-css true
-           :source-highlight true
-           :toc :left}
+:asciidoctor {:sources "README.adoc"
+              :to-dir "generated"
+              :extract-css true
+              :source-highlight true
+              :toc :left}
 ----
 
 You could play with options later to see different results.

@@ -14,7 +14,7 @@ link:http://www.methods.co.nz/asciidoc/[AsciiDoc] is a human-readable document f
 
 link:http://asciidoctor.org[Asciidoctor] is a fast text processor and publishing toolchain for converting AsciiDoc content to HTML5, DocBook 5 (or 4.5) and other formats. Asciidoctor is written in Ruby, but it has a binding to work on JVM using link:http://jruby.org[JRuby] - link:https://github.com/asciidoctor/asciidoctorj[AsciidoctorJ].
 
-link:https://github.com/asciidoctor/asciidoctor-lein-plugin[lein-asciidoctor] is a link:http://leiningen.org[Leiningen] plugin that allows to generate documentation from asciidoc files in different formats using AsciidoctorJ.
+link:https://github.com/asciidoctor/asciidoctor-lein-plugin[lein-asciidoctor] is a link:http://leiningen.org[Leiningen] plugin that allows to generate documentation from AsciiDoc files in different formats using AsciidoctorJ.
 
 image::https://raw.githubusercontent.com/asciidoctor/asciidoctor-lein-plugin/master/misc/example.png[]
 
@@ -26,25 +26,25 @@ To enable lein-asciidoctor for your project, put the following line in the :plug
 [source,clojure]
 .project.clj
 ----
-:plugins [[lein-asciidoctor "0.1.8"]]
+:plugins [[lein-asciidoctor "0.1.9"]]
 ----
 
 
 == Configuration ==
 
-To configure lein-asciidoctor, put the `:asciidoc` parameter in the file `project.clj`. It could be a single configuration (simple map) or a collection of configurations (for multiple configuration).
+To configure lein-asciidoctor, put the `:asciidoctor` parameter in the file `project.clj`. It could be a single configuration (simple map) or a collection of configurations (for multiple configuration).
 
 [source,clojure]
 .project.clj
 ----
 ; single configuration
-:asciidoc {:sources "doc/*.ascii"}
+:asciidoctor {:sources "doc/*.ascii"}
 
 ; multiple configurations
-:asciidoc [{:sources ["doc1/*.adoc" "doc2/*.adoc"]
-            :format :html5}
-           {:sources "doc/*.ascii"
-            :format :html}]
+:asciidoctor [{:sources ["doc1/*.adoc" "doc2/*.adoc"]
+               :format :html5}
+              {:sources "doc/*.ascii"
+               :format :html}]
 ----
 
 
@@ -66,7 +66,7 @@ Each configuration parameter could be a keyword (ex: `:sources`) or a string (ex
 
 *:sources*:: List of input sources. It is possible to use a single source or a vector of sources. To configure this parameter, you could also use a link:http://en.wikipedia.org/wiki/Glob_(programming)[Glob Patterns]. Default value: `"src/asciidoc/*.asciidoc"`
 
-*:excludes*:: List of glob patterns to prevent processing of some asciidoc files. It is also possible to use both variants: single pattern and collection of patterns.
+*:excludes*:: List of glob patterns to prevent processing of some AsciiDoc files. It is also possible to use both variants: single pattern and collection of patterns.
 
 *:to-dir*:: Target directory. All generated files will be placed in this directory. By default, all output will be placed in the same directory.
 
@@ -108,7 +108,7 @@ lein asciidoc
 To enable this plugin at the compile stage (for example, during `lein compile` or `lein uberjar`), use the following Leiningen hook:
 [source,clojure]
 ----
-:hooks [leiningen.asciidoc]
+:hooks [leiningen.asciidoctor]
 ----
 
 To show help for CLI, use:
@@ -125,14 +125,14 @@ lein help asciidoc
 [source,clojure]
 .project.clj
 ----
-:asciidoc [{:sources ["doc/*.ascii"]
-            :to-dir "doc-generated"
-            :compact true
-            :format :html5
-            :extract-css true
-            :toc :left
-            :title "Just an example"
-            :source-highlight true}]
+:asciidoctor [{:sources ["doc/*.ascii"]
+              :to-dir "doc-generated"
+              :compact true
+              :format :html5
+              :extract-css true
+              :toc :left
+              :title "Just an example"
+              :source-highlight true}]
 ----
 
 .As result you will get the following:

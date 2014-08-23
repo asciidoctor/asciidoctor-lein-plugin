@@ -4,10 +4,10 @@
   :license {:name "The MIT License"
             :url "https://github.com/asciidoctor/asciidoctor-lein-plugin/blob/master/LICENSE.adoc"}
 
-  :plugins [[lein-asciidoctor "0.1.8"]]
+  :plugins [[lein-asciidoctor "0.1.9"]]
 
-  :asciidoc {:sources "README.adoc"
-             :to-dir "generated"
-             :extract-css true
-             :source-highlight true
-             :toc :left})
+  :asciidoctor {:sources "README.adoc"
+                :to-dir "generated"
+                :extract-css true
+                :source-highlight true
+                :toc :left})
