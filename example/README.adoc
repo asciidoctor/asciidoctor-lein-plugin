@@ -1,6 +1,6 @@
 :author: Vladislav Bauer
 :email: bauer.vlad@gmail.com
-= Example of usage lein-asciidoc =
+= Example of usage lein-asciidoctor =
 
 [quote,'Winston Churchill']
 ____
@@ -10,7 +10,7 @@ ____
 
 == Introduction ==
 
-It is a simple example to show generation of HTML documentation using link:https://github.com/asciidoctor/asciidoctor-lein-plugin[lein-asciidoc].
+It is a simple example to show generation of HTML documentation using link:https://github.com/asciidoctor/asciidoctor-lein-plugin[lein-asciidoctor].
 
 
 == Configuration options ==

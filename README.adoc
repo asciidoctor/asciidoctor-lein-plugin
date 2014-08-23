@@ -1,11 +1,11 @@
 :author: Vladislav Bauer
 :email: bauer.vlad@gmail.com
-= lein-asciidoc =
+= lein-asciidoctor =
 
-image:https://clojars.org/lein-asciidoc/latest-version.svg["Latest version", link="https://clojars.org/lein-asciidoc"]
+image:https://clojars.org/lein-asciidoctor/latest-version.svg["Latest version", link="https://clojars.org/lein-asciidoctor"]
 
 image:https://travis-ci.org/asciidoctor/asciidoctor-lein-plugin.svg?branch=master["Build Status", link="https://travis-ci.org/asciidoctor/asciidoctor-lein-plugin"]
-image:http://jarkeeper.com/asciidoctor/asciidoctor-lein-plugin/status.png["Dependencies Status", link="http://jarkeeper.com/vbauer/lein-asciidoc"]
+image:http://jarkeeper.com/asciidoctor/asciidoctor-lein-plugin/status.png["Dependencies Status", link="http://jarkeeper.com/vbauer/lein-asciidoctor"]
 
 
 == Introduction ==
@@ -14,25 +14,25 @@ link:http://www.methods.co.nz/asciidoc/[AsciiDoc] is a human-readable document f
 
 link:http://asciidoctor.org[Asciidoctor] is a fast text processor and publishing toolchain for converting AsciiDoc content to HTML5, DocBook 5 (or 4.5) and other formats. Asciidoctor is written in Ruby, but it has a binding to work on JVM using link:http://jruby.org[JRuby] - link:https://github.com/asciidoctor/asciidoctorj[AsciidoctorJ].
 
-link:https://github.com/asciidoctor/asciidoctor-lein-plugin[lein-asciidoc] is a link:http://leiningen.org[Leiningen] plugin that allows to generate documentation from asciidoc files in different formats using AsciidoctorJ.
+link:https://github.com/asciidoctor/asciidoctor-lein-plugin[lein-asciidoctor] is a link:http://leiningen.org[Leiningen] plugin that allows to generate documentation from asciidoc files in different formats using AsciidoctorJ.
 
 image::https://raw.githubusercontent.com/asciidoctor/asciidoctor-lein-plugin/master/misc/example.png[]
 
 
 == Setup ==
 
-To enable lein-asciidoc for your project, put the following line in the :plugins vector of your project.clj file:
+To enable lein-asciidoctor for your project, put the following line in the :plugins vector of your project.clj file:
 
 [source,clojure]
 .project.clj
 ----
-:plugins [[lein-asciidoc "0.1.7"]]
+:plugins [[lein-asciidoctor "0.1.8"]]
 ----
 
 
 == Configuration ==
 
-To configure lein-asciidoc, put the `:asciidoc` parameter in the file `project.clj`. It could be a single configuration (simple map) or a collection of configurations (for multiple configuration).
+To configure lein-asciidoctor, put the `:asciidoc` parameter in the file `project.clj`. It could be a single configuration (simple map) or a collection of configurations (for multiple configuration).
 
 [source,clojure]
 .project.clj
@@ -99,7 +99,7 @@ Each configuration parameter could be a keyword (ex: `:sources`) or a string (ex
 
 == Usage ==
 
-To run lein-asciidoc plugin, you need to execute the following command in the command line:
+To run lein-asciidoctor plugin, you need to execute the following command in the command line:
 [source,bash]
 ----
 lein asciidoc
@@ -146,11 +146,11 @@ lein help asciidoc
 
 === GitHub Pages ===
 
-link:http://asciidoctor.github.io/asciidoctor-lein-plugin[GitHub Pages] for this project were also generated using lein-asciidoc.
+link:http://asciidoctor.github.io/asciidoctor-lein-plugin[GitHub Pages] for this project were also generated using lein-asciidoctor.
 
 === Example project ===
 
-Just clone current repository and try to play with link:https://github.com/asciidoctor/asciidoctor-lein-plugin/tree/master/example[`example`] project for better understanding how to use lein-asciidoc.
+Just clone current repository and try to play with link:https://github.com/asciidoctor/asciidoctor-lein-plugin/tree/master/example[`example`] project for better understanding how to use lein-asciidoctor.
 
 
 ==  Useful links ==

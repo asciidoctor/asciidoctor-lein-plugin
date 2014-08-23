@@ -1,10 +1,10 @@
 (defproject example "0.1.0-SNAPSHOT"
-  :description "Simple example of using lein-asciidoc"
-  :url "https://github.com/vbauer/lein-asciidoc"
+  :description "Simple example of using lein-asciidoctor"
+  :url "https://github.com/asciidoctor/asciidoctor-lein-plugin/tree/master/example"
   :license {:name "The MIT License"
             :url "https://github.com/asciidoctor/asciidoctor-lein-plugin/blob/master/LICENSE.adoc"}
 
-  :plugins [[lein-asciidoc "0.1.7"]]
+  :plugins [[lein-asciidoctor "0.1.8"]]
 
   :asciidoc {:sources "README.adoc"
              :to-dir "generated"
