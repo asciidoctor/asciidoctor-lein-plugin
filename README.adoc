@@ -4,12 +4,8 @@
 
 image:https://clojars.org/lein-asciidoc/latest-version.svg["Latest version", link="https://clojars.org/lein-asciidoc"]
 
-////
-I need to have permissions in Asciidoctor organization to return some badges.
-
-image:https://travis-ci.org/vbauer/lein-asciidoc.svg?branch=master["Build Status", link="https://travis-ci.org/vbauer/lein-asciidoc"]
-image:http://jarkeeper.com/vbauer/lein-asciidoc/status.png["Dependencies Status", link="http://jarkeeper.com/vbauer/lein-asciidoc"]
-////
+image:https://travis-ci.org/asciidoctor/asciidoctor-lein-plugin.svg?branch=master["Build Status", link="https://travis-ci.org/asciidoctor/asciidoctor-lein-plugin"]
+image:http://jarkeeper.com/asciidoctor/asciidoctor-lein-plugin/status.png["Dependencies Status", link="http://jarkeeper.com/vbauer/lein-asciidoc"]
 
 
 == Introduction ==

@@ -1,8 +1,8 @@
 (defproject lein-asciidoc "0.1.8-SNAPSHOT"
   :description "A Leiningen plugin for generating documentation using Asciidoctor."
   :url "https://github.com/vbauer/lein-asciidoc"
-  :license {:name "Eclipse Public License"
-            :url "http://www.eclipse.org/legal/epl-v10.html"}
+  :license {:name "The MIT License"
+            :url "https://github.com/asciidoctor/asciidoctor-lein-plugin/blob/master/LICENSE.adoc"}
 
   :repositories [["lordofthejars" "http://dl.bintray.com/lordofthejars/maven"]]
 
