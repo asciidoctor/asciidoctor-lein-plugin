@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.0">
 <meta name="author" content="Vladislav Bauer">
-<title>lein-asciidoc</title>
+<title>lein-asciidoctor</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic|Noto+Serif:400,400italic,700,700italic|Droid+Sans+Mono:400">
 <link rel="stylesheet" href="./asciidoctor.css">
 <link rel="stylesheet" href="./coderay-asciidoctor.css">
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
-<h1>lein-asciidoc</h1>
+<h1>lein-asciidoctor</h1>
 <div class="details">
 <span id="author" class="author">Vladislav Bauer</span><br>
 <span id="email" class="email"><a href="mailto:bauer.vlad@gmail.com">bauer.vlad@gmail.com</a></span><br>
@@ -46,11 +46,11 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p><span class="image"><a class="image" href="https://clojars.org/lein-asciidoc"><img src="https://clojars.org/lein-asciidoc/latest-version.svg" alt="Latest version"></a></span></p>
+<p><span class="image"><a class="image" href="https://clojars.org/lein-asciidoctor"><img src="https://clojars.org/lein-asciidoctor/latest-version.svg" alt="Latest version"></a></span></p>
 </div>
 <div class="paragraph">
 <p><span class="image"><a class="image" href="https://travis-ci.org/asciidoctor/asciidoctor-lein-plugin"><img src="https://travis-ci.org/asciidoctor/asciidoctor-lein-plugin.svg?branch=master" alt="Build Status"></a></span>
-<span class="image"><a class="image" href="http://jarkeeper.com/vbauer/lein-asciidoc"><img src="http://jarkeeper.com/asciidoctor/asciidoctor-lein-plugin/status.png" alt="Dependencies Status"></a></span></p>
+<span class="image"><a class="image" href="http://jarkeeper.com/vbauer/lein-asciidoctor"><img src="http://jarkeeper.com/asciidoctor/asciidoctor-lein-plugin/status.png" alt="Dependencies Status"></a></span></p>
 </div>
 </div>
 </div>
@@ -64,7 +64,7 @@
 <p><a href="http://asciidoctor.org">Asciidoctor</a> is a fast text processor and publishing toolchain for converting AsciiDoc content to HTML5, DocBook 5 (or 4.5) and other formats. Asciidoctor is written in Ruby, but it has a binding to work on JVM using <a href="http://jruby.org">JRuby</a> - <a href="https://github.com/asciidoctor/asciidoctorj">AsciidoctorJ</a>.</p>
 </div>
 <div class="paragraph">
-<p><a href="https://github.com/asciidoctor/asciidoctor-lein-plugin">lein-asciidoc</a> is a <a href="http://leiningen.org">Leiningen</a> plugin that allows to generate documentation from asciidoc files in different formats using AsciidoctorJ.</p>
+<p><a href="https://github.com/asciidoctor/asciidoctor-lein-plugin">lein-asciidoctor</a> is a <a href="http://leiningen.org">Leiningen</a> plugin that allows to generate documentation from AsciiDoc files in different formats using AsciidoctorJ.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -77,12 +77,12 @@
 <h2 id="_setup">Setup</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>To enable lein-asciidoc for your project, put the following line in the :plugins vector of your project.clj file:</p>
+<p>To enable lein-asciidoctor for your project, put the following line in the :plugins vector of your project.clj file:</p>
 </div>
 <div class="listingblock">
 <div class="title">project.clj</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure"><span class="symbol">:plugins</span> [[lein-asciidoc <span class="string"><span class="delimiter">&quot;</span><span class="content">0.1.7</span><span class="delimiter">&quot;</span></span>]]</code></pre>
+<pre class="CodeRay highlight"><code data-lang="clojure"><span class="symbol">:plugins</span> [[lein-asciidoctor <span class="string"><span class="delimiter">&quot;</span><span class="content">0.1.9</span><span class="delimiter">&quot;</span></span>]]</code></pre>
 </div>
 </div>
 </div>
@@ -91,19 +91,19 @@
 <h2 id="_configuration">Configuration</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>To configure lein-asciidoc, put the <code>:asciidoc</code> parameter in the file <code>project.clj</code>. It could be a single configuration (simple map) or a collection of configurations (for multiple configuration).</p>
+<p>To configure lein-asciidoctor, put the <code>:asciidoctor</code> parameter in the file <code>project.clj</code>. It could be a single configuration (simple map) or a collection of configurations (for multiple configuration).</p>
 </div>
 <div class="listingblock">
 <div class="title">project.clj</div>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="clojure"><span class="comment">; single configuration</span>
-<span class="symbol">:asciidoc</span> {<span class="symbol">:sources</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">doc/*.ascii</span><span class="delimiter">&quot;</span></span>}
+<span class="symbol">:asciidoctor</span> {<span class="symbol">:sources</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">doc/*.ascii</span><span class="delimiter">&quot;</span></span>}
 
 <span class="comment">; multiple configurations</span>
-<span class="symbol">:asciidoc</span> [{<span class="symbol">:sources</span> [<span class="string"><span class="delimiter">&quot;</span><span class="content">doc1/*.adoc</span><span class="delimiter">&quot;</span></span> <span class="string"><span class="delimiter">&quot;</span><span class="content">doc2/*.adoc</span><span class="delimiter">&quot;</span></span>]
-            <span class="symbol">:format</span> <span class="symbol">:html5</span>}
-           {<span class="symbol">:sources</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">doc/*.ascii</span><span class="delimiter">&quot;</span></span>
-            <span class="symbol">:format</span> <span class="symbol">:html</span>}]</code></pre>
+<span class="symbol">:asciidoctor</span> [{<span class="symbol">:sources</span> [<span class="string"><span class="delimiter">&quot;</span><span class="content">doc1/*.adoc</span><span class="delimiter">&quot;</span></span> <span class="string"><span class="delimiter">&quot;</span><span class="content">doc2/*.adoc</span><span class="delimiter">&quot;</span></span>]
+               <span class="symbol">:format</span> <span class="symbol">:html5</span>}
+              {<span class="symbol">:sources</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">doc/*.ascii</span><span class="delimiter">&quot;</span></span>
+               <span class="symbol">:format</span> <span class="symbol">:html</span>}]</code></pre>
 </div>
 </div>
 <div class="sect2">
@@ -144,7 +144,7 @@
 </dd>
 <dt class="hdlist1"><strong>:excludes</strong></dt>
 <dd>
-<p>List of glob patterns to prevent processing of some asciidoc files. It is also possible to use both variants: single pattern and collection of patterns.</p>
+<p>List of glob patterns to prevent processing of some AsciiDoc files. It is also possible to use both variants: single pattern and collection of patterns.</p>
 </dd>
 <dt class="hdlist1"><strong>:to-dir</strong></dt>
 <dd>
@@ -211,7 +211,7 @@
 <h2 id="_usage">Usage</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>To run lein-asciidoc plugin, you need to execute the following command in the command line:</p>
+<p>To run lein-asciidoctor plugin, you need to execute the following command in the command line:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -223,7 +223,7 @@
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure"><span class="symbol">:hooks</span> [leiningen.asciidoc]</code></pre>
+<pre class="CodeRay highlight"><code data-lang="clojure"><span class="symbol">:hooks</span> [leiningen.asciidoctor]</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -244,14 +244,14 @@
 <div class="listingblock">
 <div class="title">project.clj</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure"><span class="symbol">:asciidoc</span> [{<span class="symbol">:sources</span> [<span class="string"><span class="delimiter">&quot;</span><span class="content">doc/*.ascii</span><span class="delimiter">&quot;</span></span>]
-            <span class="symbol">:to-dir</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">doc-generated</span><span class="delimiter">&quot;</span></span>
-            <span class="symbol">:compact</span> <span class="predefined-constant">true</span>
-            <span class="symbol">:format</span> <span class="symbol">:html5</span>
-            <span class="symbol">:extract-css</span> <span class="predefined-constant">true</span>
-            <span class="symbol">:toc</span> <span class="symbol">:left</span>
-            <span class="symbol">:title</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Just an example</span><span class="delimiter">&quot;</span></span>
-            <span class="symbol">:source-highlight</span> <span class="predefined-constant">true</span>}]</code></pre>
+<pre class="CodeRay highlight"><code data-lang="clojure"><span class="symbol">:asciidoctor</span> [{<span class="symbol">:sources</span> [<span class="string"><span class="delimiter">&quot;</span><span class="content">doc/*.ascii</span><span class="delimiter">&quot;</span></span>]
+              <span class="symbol">:to-dir</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">doc-generated</span><span class="delimiter">&quot;</span></span>
+              <span class="symbol">:compact</span> <span class="predefined-constant">true</span>
+              <span class="symbol">:format</span> <span class="symbol">:html5</span>
+              <span class="symbol">:extract-css</span> <span class="predefined-constant">true</span>
+              <span class="symbol">:toc</span> <span class="symbol">:left</span>
+              <span class="symbol">:title</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">Just an example</span><span class="delimiter">&quot;</span></span>
+              <span class="symbol">:source-highlight</span> <span class="predefined-constant">true</span>}]</code></pre>
 </div>
 </div>
 <div class="ulist">
@@ -288,13 +288,13 @@
 <div class="sect2">
 <h3 id="_github_pages">GitHub Pages</h3>
 <div class="paragraph">
-<p><a href="http://asciidoctor.github.io/asciidoctor-lein-plugin">GitHub Pages</a> for this project were also generated using lein-asciidoc.</p>
+<p><a href="http://asciidoctor.github.io/asciidoctor-lein-plugin">GitHub Pages</a> for this project were also generated using lein-asciidoctor.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_example_project">Example project</h3>
 <div class="paragraph">
-<p>Just clone current repository and try to play with <a href="https://github.com/asciidoctor/asciidoctor-lein-plugin/tree/master/example"><code>example</code></a> project for better understanding how to use lein-asciidoc.</p>
+<p>Just clone current repository and try to play with <a href="https://github.com/asciidoctor/asciidoctor-lein-plugin/tree/master/example"><code>example</code></a> project for better understanding how to use lein-asciidoctor.</p>
 </div>
 </div>
 </div>
