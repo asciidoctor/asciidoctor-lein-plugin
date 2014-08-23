@@ -4,8 +4,12 @@
 
 image:https://clojars.org/lein-asciidoc/latest-version.svg["Latest version", link="https://clojars.org/lein-asciidoc"]
 
+////
+I need to have permissions in Asciidoctor organization to return some badges.
+
 image:https://travis-ci.org/vbauer/lein-asciidoc.svg?branch=master["Build Status", link="https://travis-ci.org/vbauer/lein-asciidoc"]
 image:http://jarkeeper.com/vbauer/lein-asciidoc/status.png["Dependencies Status", link="http://jarkeeper.com/vbauer/lein-asciidoc"]
+////
 
 
 == Introduction ==
@@ -14,9 +18,9 @@ link:http://www.methods.co.nz/asciidoc/[AsciiDoc] is a human-readable document f
 
 link:http://asciidoctor.org[Asciidoctor] is a fast text processor and publishing toolchain for converting AsciiDoc content to HTML5, DocBook 5 (or 4.5) and other formats. Asciidoctor is written in Ruby, but it has a binding to work on JVM using link:http://jruby.org[JRuby] - link:https://github.com/asciidoctor/asciidoctorj[AsciidoctorJ].
 
-link:https://github.com/vbauer/lein-asciidoc[lein-asciidoc] is a link:http://leiningen.org[Leiningen] plugin that allows to generate documentation from asciidoc files in different formats using AsciidoctorJ.
+link:https://github.com/asciidoctor/asciidoctor-lein-plugin[lein-asciidoc] is a link:http://leiningen.org[Leiningen] plugin that allows to generate documentation from asciidoc files in different formats using AsciidoctorJ.
 
-image::https://raw.githubusercontent.com/vbauer/lein-asciidoc/master/misc/example.png[]
+image::https://raw.githubusercontent.com/asciidoctor/asciidoctor-lein-plugin/master/misc/example.png[]
 
 
 == Setup ==
@@ -146,11 +150,11 @@ lein help asciidoc
 
 === GitHub Pages ===
 
-link:http://vbauer.github.io/lein-asciidoc[GitHub Pages] for this project were also generated using lein-asciidoc.
+link:http://asciidoctor.github.io/asciidoctor-lein-plugin[GitHub Pages] for this project were also generated using lein-asciidoc.
 
 === Example project ===
 
-Just clone current repository and try to play with link:https://github.com/vbauer/lein-asciidoc/tree/master/example[`example`] project for better understanding how to use lein-asciidoc.
+Just clone current repository and try to play with link:https://github.com/asciidoctor/asciidoctor-lein-plugin/tree/master/example[`example`] project for better understanding how to use lein-asciidoc.
 
 
 ==  Useful links ==
@@ -166,4 +170,4 @@ Just clone current repository and try to play with link:https://github.com/vbaue
 
 Copyright © 2014 Vladislav Bauer and the Asciidoctor Project. Free use of this software is granted under the terms of the MIT License.
 
-See the LICENSE file for details.
+See the link:https://github.com/asciidoctor/asciidoctor-lein-plugin/blob/master/LICENSE.adoc[LICENSE] file for details.

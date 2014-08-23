@@ -10,7 +10,7 @@ ____
 
 == Introduction ==
 
-It is a simple example to show generation of HTML documentation using link:https://github.com/vbauer/lein-asciidoc[lein-asciidoc].
+It is a simple example to show generation of HTML documentation using link:https://github.com/asciidoctor/asciidoctor-lein-plugin[lein-asciidoc].
 
 
 == Configuration options ==
