@@ -162,20 +162,8 @@ Just clone current repository and try to play with link:https://github.com/vbaue
 * link:http://www.compileonline.com/try_asciidoc_online.php[Try AsciiDoc Online]
 
 
-== Thanks to ==
+== Copyright and Licensing ==
 
-link:http://asciidoctor.org[Asciidoctor] & link:https://github.com/asciidoctor/asciidoctorj[AsciidoctorJ] developers for really great projects.
+Copyright © 2014 Vladislav Bauer and the Asciidoctor Project. Free use of this software is granted under the terms of the MIT License.
 
-
-== Might also like ==
-
-* link:https://github.com/vbauer/lein-jshint[lein-jshint] - a Leiningen plugin for running javascript code through JSHint.
-* link:https://github.com/vbauer/lein-jslint[lein-jslint] - a Leiningen plugin for running javascript code through JSLint.
-* link:https://github.com/vbauer/lein-plantuml[lein-plantuml] - a Leiningen plugin for generating UML diagrams using PluntUML.
-
-
-== License ==
-
-Copyright © 2014 Vladislav Bauer
-
-Distributed under the Eclipse Public License, the same as Clojure.
+See the LICENSE file for details.

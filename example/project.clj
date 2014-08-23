@@ -6,7 +6,7 @@
 
   :plugins [[lein-asciidoc "0.1.7"]]
 
-  :asciidoc {:sources "README.asciidoc"
+  :asciidoc {:sources "README.adoc"
              :to-dir "generated"
              :extract-css true
              :source-highlight true
