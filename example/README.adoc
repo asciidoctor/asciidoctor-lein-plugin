@@ -54,6 +54,6 @@ Processed asciidoc file: ./README.adoc
 
 New `"generated"` directory with 3 files should be created:
 
-* ./generated/index.html
+* ./generated/README.html
 * ./generated/asciidoctor.css
 * ./generated/coderay-asciidoctor.css
