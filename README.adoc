@@ -108,7 +108,7 @@ lein asciidoc
 To enable this plugin at the compile stage (for example, during `lein compile` or `lein uberjar`), use the following Leiningen hook:
 [source,clojure]
 ----
-:hooks [leiningen.asciidoctor]
+:hooks [lein-asciidoctor.plugin]
 ----
 
 To show help for CLI, use:
