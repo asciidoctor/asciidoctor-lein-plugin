@@ -1,4 +1,4 @@
-(defproject lein-asciidoctor "0.1.11"
+(defproject lein-asciidoctor "0.1.12-SNAPSHOT"
   :description "A Leiningen plugin for generating documentation using Asciidoctor."
   :url "https://github.com/asciidoctor/asciidoctor-lein-plugin"
   :license {:name "The MIT License"
