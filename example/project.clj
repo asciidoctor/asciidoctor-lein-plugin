@@ -5,7 +5,7 @@
             :url "https://github.com/asciidoctor/asciidoctor-lein-plugin/blob/master/LICENSE.adoc"}
 
   ; List of plugins
-  :plugins [[lein-asciidoctor "0.1.10"]]
+  :plugins [[lein-asciidoctor "0.1.12"]]
 
   ; List of hooks
   ; It's used for running lein-asciidoctor during compile phase
