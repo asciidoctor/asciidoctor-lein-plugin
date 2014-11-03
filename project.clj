@@ -14,12 +14,13 @@
   :plugins [[jonase/eastwood "0.1.4" :exclusions [org.clojure/clojure]]
             [lein-kibit "0.0.8" :exclusions [org.clojure/clojure]]
             [lein-bikeshed "0.1.8" :exclusions [org.clojure/clojure]]
-            [lein-ancient "0.5.5"]]
+            [lein-ancient "0.5.5" :exclusions [org.clojure/clojure]]]
 
   :profiles {
 
     :dev {:dependencies [[midje "1.6.3" :exclusions [org.clojure/clojure joda-time]]]
-          :plugins [[lein-midje "3.1.3"]]}
+          :plugins [[lein-midje "3.1.3"]
+                    [me.raynes/fs "1.4.4" :exclusions [org.clojure/clojure]]]}
 
     :prod {:plugins [[lein-release "1.0.6" :exclusions [org.clojure/clojure]]]
            :global-vars {*warn-on-reflection* true}
