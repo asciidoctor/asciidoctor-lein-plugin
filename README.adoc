@@ -153,6 +153,14 @@ link:http://asciidoctor.github.io/asciidoctor-lein-plugin[GitHub Pages] for this
 Just clone current repository and try to play with link:https://github.com/asciidoctor/asciidoctor-lein-plugin/tree/master/example[`example`] project for better understanding how to use lein-asciidoctor.
 
 
+== Unit testing ==
+To run unit tests:
+[source,bash]
+----
+lein with-profile dev midje
+----
+
+
 ==  Useful links ==
 
 * link:http://www.methods.co.nz/asciidoc/[Full AsciiDoc documentation]

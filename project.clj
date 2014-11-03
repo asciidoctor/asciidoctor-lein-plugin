@@ -12,15 +12,22 @@
                  [org.slf4j/slf4j-nop "1.7.7"]]
 
   :plugins [[jonase/eastwood "0.1.4" :exclusions [org.clojure/clojure]]
-            [lein-release "1.0.6" :exclusions [org.clojure/clojure]]
             [lein-kibit "0.0.8" :exclusions [org.clojure/clojure]]
             [lein-bikeshed "0.1.8" :exclusions [org.clojure/clojure]]
             [lein-ancient "0.5.5"]]
 
+  :profiles {
+
+    :dev {:dependencies [[midje "1.6.3" :exclusions [org.clojure/clojure joda-time]]]
+          :plugins [[lein-midje "3.1.3"]]}
+
+    :prod {:plugins [[lein-release "1.0.6" :exclusions [org.clojure/clojure]]]
+           :global-vars {*warn-on-reflection* true}
+           :lein-release {:deploy-via :clojars
+                          :scm :git}}
+
+  }
+
   :eval-in-leiningen true
   :pedantic? :abort
-  :global-vars {*warn-on-reflection* true}
-
-  :local-repo-classpath true
-  :lein-release {:deploy-via :clojars
-                 :scm :git})
+  :local-repo-classpath true)

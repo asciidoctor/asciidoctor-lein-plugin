@@ -117,13 +117,16 @@
   (with-open [writer (io/writer file)]
     (.write writer content)))
 
+(defn- load-resource [in]
+  (let [res (io/resource (str RESOURCE_PATH in))]
+    (if (nil? res) nil (slurp res))))
+
 (defn- copy-resource [in dir file]
   (let [outf (io/file dir file)]
     (if (not (.exists outf))
-      (let [res (io/resource (str RESOURCE_PATH in))]
-        (write-file
-         (str outf)
-         (slurp res))))))
+      (write-file
+       (str outf)
+       (load-resource in)))))
 
 (defn- copy-resources [source options]
   (let [dir (or (config options :to-dir) (fs/parent source))]
