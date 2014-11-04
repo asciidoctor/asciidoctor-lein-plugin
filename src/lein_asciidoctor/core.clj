@@ -119,7 +119,7 @@
 
 (defn- load-resource [in]
   (let [res (io/resource (str RESOURCE_PATH in))]
-    (if (nil? res) nil (slurp res))))
+    (when-not (nil? res) (slurp res))))
 
 (defn- copy-resource [in dir file]
   (let [outf (io/file dir file)]

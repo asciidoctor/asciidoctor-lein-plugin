@@ -1,6 +1,6 @@
 (ns ^{:author "Vladislav Bauer"}
   lein-asciidoctor.t-core
-  (:use [midje.sweet]
+  (:use [midje.sweet :only [fact]]
         [midje.util :only [testable-privates]]
         [clojure.string :only [blank?]])
   (:require [lein-asciidoctor.core]
@@ -28,14 +28,19 @@
 
 ; Helper functions
 
+(defn- clean-output []
+  (fs/delete-dir DEF_OUTPUT))
+
 (defn- run-generator []
   (try
-    (asciidoctor DEF_CONFIG)
-    (and
-     (fs/exists? (str DEF_OUTPUT "README.html"))
-     (fs/exists? (str DEF_OUTPUT (var-get RESOURCE_ASCIIDOCTOR)))
-     (fs/exists? (str DEF_OUTPUT (var-get RESOURCE_CODERAY_ASCIIDOCTOR))))
-    (finally (fs/delete-dir DEF_OUTPUT))))
+    (do
+      (clean-output)
+      (asciidoctor DEF_CONFIG)
+      (and
+       (fs/exists? (str DEF_OUTPUT "README.html"))
+       (fs/exists? (str DEF_OUTPUT (var-get RESOURCE_ASCIIDOCTOR)))
+       (fs/exists? (str DEF_OUTPUT (var-get RESOURCE_CODERAY_ASCIIDOCTOR)))))
+    (finally (clean-output))))
 
 
 ; Tests
