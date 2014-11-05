@@ -19,7 +19,8 @@
   :profiles {
 
     :dev {:dependencies [[midje "1.6.3" :exclusions [org.clojure/clojure joda-time]]]
-          :plugins [[lein-midje "3.1.3"]]}
+          ; Don't use the latest version: https://github.com/marick/lein-midje/issues/47
+          :plugins [[lein-midje "3.1.1"]]}
 
     :prod {:plugins [[lein-release "1.0.6" :exclusions [org.clojure/clojure]]]
            :global-vars {*warn-on-reflection* true}
