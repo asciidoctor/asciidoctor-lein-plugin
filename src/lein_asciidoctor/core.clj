@@ -55,12 +55,13 @@
    [:excludes           scoll                            ]
    [:extract-css        sbool                            ]
    [:to-dir             sget                             ]
-   [:format             sname      :html                 ]
    [:compact            sbool                            ]
    [:doctype            sname                            ]
    [:header-footer      sbool      true                  ]
+   [:in-place           sbool      false                 ]
 
    ; Configuration attributes
+   [:format             sname      :html                 ]
    [:source-highlight   sbool                            ]
    [:toc                sget                             ]
    [:toc-title          sget                             ]
@@ -88,7 +89,8 @@
       (add-opt :toc (config conf :toc))
       (add-opt :title (config conf :title))
       (add-opt :toc-title (config conf :toc-title))
-      (add-opt :toclevels (config conf :toc-levels)))
+      (add-opt :toclevels (config conf :toc-levels))
+      (add-opt :backend (config conf :format)))
     attrs))
 
 (defn- asciidoctor-config [conf]
@@ -98,11 +100,11 @@
         (fs/mkdirs to-dir)
         (add-opt result :to_dir to-dir)))
     (doto result
-      (add-opt :attributes (asciidoctor-attrs conf))
       (add-opt :header_footer (config conf :header-footer))
       (add-opt :doctype (config conf :doctype))
       (add-opt :compact (config conf :compact))
-      (add-opt :backend (config conf :format)))))
+      (add-opt :in_place (config conf :in-place))
+      (add-opt :attributes (asciidoctor-attrs conf)))))
 
 
 ; Internal API : Resources
