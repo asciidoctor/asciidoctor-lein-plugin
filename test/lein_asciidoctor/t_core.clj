@@ -38,15 +38,22 @@
 (defn- clean-output []
   (fs/delete-dir DEF_OUTPUT))
 
+(defn- file-exists? [& parts]
+  (let [path (apply str parts)]
+    (and
+     (fs/exists? path)
+     (fs/file? path)
+     (> (fs/size path) 0))))
+
 (defn- run-generator [out fmt]
   (try
     (do
       (clean-output)
       (asciidoctor (config fmt))
       (and
-       (fs/exists? (str DEF_OUTPUT out))
-       (fs/exists? (str DEF_OUTPUT (var-get RESOURCE_ASCIIDOCTOR)))
-       (fs/exists? (str DEF_OUTPUT (var-get RESOURCE_CODERAY_ASCIIDOCTOR)))))
+       (file-exists? DEF_OUTPUT out)
+       (file-exists? DEF_OUTPUT (var-get RESOURCE_ASCIIDOCTOR))
+       (file-exists? DEF_OUTPUT (var-get RESOURCE_CODERAY_ASCIIDOCTOR))))
     (finally (clean-output))))
 
 
