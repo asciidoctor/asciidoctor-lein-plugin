@@ -11,7 +11,7 @@
                  [org.asciidoctor/asciidoctorj "1.5.1" :exclusions [org.slf4j/slf4j-api]]
                  [org.slf4j/slf4j-nop "1.7.7"]]
 
-  :plugins [[jonase/eastwood "0.1.4" :exclusions [org.clojure/clojure]]
+  :plugins [[jonase/eastwood "0.1.5" :exclusions [org.clojure/clojure]]
             [lein-kibit "0.0.8" :exclusions [org.clojure/clojure]]
             [lein-bikeshed "0.1.8" :exclusions [org.clojure/clojure]]
             [lein-ancient "0.5.5" :exclusions [org.clojure/clojure]]]
