@@ -145,11 +145,15 @@
     (remove (fn [s] (some #(.compareTo % s) excludes)) sources)))
 
 (defn- process-source [engine source conf]
-  (let [options (asciidoctor-config conf)]
-    (.convertFile engine source options)
-    (if (config conf :extract-css)
-      (copy-resources source conf))
-    (log "Processed asciidoc file: %s" source)))
+  (try
+    (let [options (asciidoctor-config conf)]
+      (.convertFile engine source options)
+      (if (config conf :extract-css)
+        (copy-resources source conf))
+      (log "Processed asciidoc file: %s" source))
+    (catch Throwable t
+      (log "Error: %s" (.getMessage t))
+      (main/abort))))
 
 (defn- process-config [engine conf]
   (let [sources (source-list conf)]
