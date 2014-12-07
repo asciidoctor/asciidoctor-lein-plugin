@@ -8,12 +8,12 @@
 
   :dependencies [[clj-glob "1.0.0" :exclusions [org.clojure/clojure]]
                  [me.raynes/fs "1.4.6" :exclusions [org.clojure/clojure]]
-                 [org.asciidoctor/asciidoctorj "1.5.1" :exclusions [org.slf4j/slf4j-api]]
+                 [org.asciidoctor/asciidoctorj "1.5.2" :exclusions [org.slf4j/slf4j-api]]
                  [org.slf4j/slf4j-nop "1.7.7"]]
 
   :plugins [[jonase/eastwood "0.1.5" :exclusions [org.clojure/clojure]]
             [lein-kibit "0.0.8" :exclusions [org.clojure/clojure]]
-            [lein-bikeshed "0.1.8" :exclusions [org.clojure/clojure]]
+            [lein-bikeshed "0.2.0" :exclusions [org.clojure/clojure]]
             [lein-ancient "0.5.5" :exclusions [org.clojure/clojure]]]
 
   :profiles {
