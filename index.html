@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 1.5.0">
+<meta name="generator" content="Asciidoctor 1.5.2">
 <meta name="author" content="Vladislav Bauer">
 <title>lein-asciidoctor</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic|Noto+Serif:400,400italic,700,700italic|Droid+Sans+Mono:400">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400">
 <link rel="stylesheet" href="./asciidoctor.css">
 <link rel="stylesheet" href="./coderay-asciidoctor.css">
 </head>
@@ -37,6 +37,7 @@
 <li><a href="#_example_project">Example project</a></li>
 </ul>
 </li>
+<li><a href="#_unit_testing">Unit testing</a></li>
 <li><a href="#_useful_links">Useful links</a></li>
 <li><a href="#_copyright_and_licensing">Copyright and Licensing</a></li>
 </ul>
@@ -82,7 +83,7 @@
 <div class="listingblock">
 <div class="title">project.clj</div>
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="clojure"><span class="symbol">:plugins</span> [[lein-asciidoctor <span class="string"><span class="delimiter">&quot;</span><span class="content">0.1.11</span><span class="delimiter">&quot;</span></span>]]</code></pre>
+<pre class="CodeRay highlight"><code data-lang="clojure"><span class="symbol">:plugins</span> [[lein-asciidoctor <span class="string"><span class="delimiter">&quot;</span><span class="content">0.1.12</span><span class="delimiter">&quot;</span></span>]]</code></pre>
 </div>
 </div>
 </div>
@@ -295,6 +296,19 @@
 <h3 id="_example_project">Example project</h3>
 <div class="paragraph">
 <p>Just clone current repository and try to play with <a href="https://github.com/asciidoctor/asciidoctor-lein-plugin/tree/master/example"><code>example</code></a> project for better understanding how to use lein-asciidoctor.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_unit_testing">Unit testing</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To run unit tests:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="bash">lein with-profile dev midje</code></pre>
 </div>
 </div>
 </div>
