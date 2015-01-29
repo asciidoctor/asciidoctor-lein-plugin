@@ -62,7 +62,7 @@
 
    ; Configuration attributes
    [:format             sname      :html                 ]
-   [:source-highlight   sbool                            ]
+   [:source-highlight   sbool      false                 ]
    [:toc                sget                             ]
    [:toc-title          sget                             ]
    [:toc-levels         sget                             ]

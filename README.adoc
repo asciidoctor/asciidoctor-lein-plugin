@@ -92,7 +92,7 @@ Each configuration parameter could be a keyword (ex: `:sources`) or a string (ex
 
 *:doctype*:: Document type: `:article`, `:book`, `:manpage` or `:inline`. Sets the root element when using the docbook format and the style class on the HTML body element when using the html format. The `:book` document type allows multiple level-0 section titles in a single document. The `:manpage` document type enables parsing of metadata necessary to produce a manpage. The `:inline` document type allows the content of a single paragraph to be formatted and returned without wrapping it in a containing element. Defaults to `:article`.
 
-*:source-highlight*:: Enable syntax hightlighter for source codes. Possible values: true (default) or false.
+*:source-highlight*:: Enable syntax hightlighter for source codes. Possible values: true or false (default).
 
 *:extract-css*:: Extract CSS resources in the output directory. Default `asciidoctor.css` will be extracted always. CSS file for syntax hightlighter (`coderay-asciidoctor.css`) will be extracted if `:source-highlight` parameter is turned on.
 
