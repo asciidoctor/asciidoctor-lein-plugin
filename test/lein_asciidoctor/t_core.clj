@@ -18,6 +18,7 @@
   lein-asciidoctor.core
     load-resource
     asciidoctor
+    config-safe-mode
     RESOURCE_ASCIIDOCTOR
     RESOURCE_ASCIIDOCTOR_DEFAULT
     RESOURCE_CODERAY_ASCIIDOCTOR)
@@ -71,3 +72,10 @@
   (run-generator DEF_OUTPUT_DOCBOOK :docbook) => true
   (run-generator DEF_OUTPUT_DOCBOOK :docbook5) => true
   (run-generator DEF_OUTPUT_DOCBOOK :docbook45) => true)
+
+(fact "Check safe mode parameter"
+  (config-safe-mode "1") => 1
+  (config-safe-mode "2") => 2
+  (config-safe-mode "safe") => 1
+  (config-safe-mode "unknown") => 0
+  (config-safe-mode nil) => 0)

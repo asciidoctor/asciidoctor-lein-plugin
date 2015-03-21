@@ -1,6 +1,6 @@
 (ns ^{:author "Vladislav Bauer"}
   lein-asciidoctor.core
-  (:import (org.asciidoctor Asciidoctor$Factory Options Attributes)
+  (:import (org.asciidoctor Asciidoctor$Factory Options Attributes SafeMode)
            (java.util HashMap))
   (:require [leiningen.core.main :as main]
             [org.satta.glob :as glob]
@@ -8,6 +8,10 @@
             [clojure.walk :as walk]
             [clojure.string :as string]
             [clojure.java.io :as io]))
+
+
+; Constants
+(def ^:private DEF_SAFE_MODE 0)
 
 
 ; Internal API: Common
@@ -59,6 +63,7 @@
    [:doctype            sname                            ]
    [:header-footer      sbool      true                  ]
    [:in-place           sbool      false                 ]
+   [:safe               sget                             ]
 
    ; Configuration attributes
    [:format             sname      :html                 ]
@@ -78,6 +83,17 @@
         func (nth params 1)
         defarg (nth params 2 nil)]
     (func conf k defarg)))
+
+(defn- config-safe-mode [mode]
+  (try
+    (Integer/parseInt mode)
+    (catch Exception e1
+      (try (-> mode
+               (.toUpperCase)
+               (SafeMode/valueOf)
+               (.getLevel))
+        (catch Exception e2
+          DEF_SAFE_MODE)))))
 
 (defn- asciidoctor-attrs [conf]
   (let [attrs (HashMap.)]
@@ -104,6 +120,7 @@
       (add-opt :doctype (config conf :doctype))
       (add-opt :compact (config conf :compact))
       (add-opt :in_place (config conf :in-place))
+      (add-opt :safe (config-safe-mode (config conf :safe)))
       (add-opt :attributes (asciidoctor-attrs conf)))))
 
 
