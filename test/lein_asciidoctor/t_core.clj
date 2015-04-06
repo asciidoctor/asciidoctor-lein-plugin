@@ -16,6 +16,8 @@
 
 (testable-privates
   lein-asciidoctor.core
+    log
+    clean-path
     load-resource
     asciidoctor
     config-safe-mode
@@ -37,14 +39,16 @@
     :toc :left}})
 
 (defn- clean-output []
-  (fs/delete-dir DEF_OUTPUT))
+  (fs/delete-dir (clean-path DEF_OUTPUT)))
 
 (defn- file-exists? [& parts]
-  (let [path (apply str parts)]
-    (and
-     (fs/exists? path)
-     (fs/file? path)
-     (> (fs/size path) 0))))
+  (let [path (clean-path (apply str parts))
+        is-existed (fs/exists? path)
+        is-file (fs/file? path)
+        is-not-empty (> (fs/size path) 0)]
+    (log "Path: %s (existed: %s, file: %s, not empty: %s)"
+         path is-existed is-file is-not-empty)
+    (and is-existed is-file is-not-empty)))
 
 (defn- run-generator [out fmt]
   (try

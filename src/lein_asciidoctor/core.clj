@@ -3,7 +3,6 @@
   (:import (org.asciidoctor Asciidoctor$Factory Options Attributes SafeMode)
            (java.util HashMap))
   (:require [leiningen.core.main :as main]
-            [org.satta.glob :as glob]
             [me.raynes.fs :as fs]
             [clojure.walk :as walk]
             [clojure.string :as string]
@@ -11,12 +10,21 @@
 
 
 ; Constants
+
 (def ^:private DEF_SAFE_MODE 0)
+(def ^:private IS_WINDOWS
+  (.startsWith (System/getProperty "os.name") "Windows"))
 
 
 ; Internal API: Common
 
-(defn- scan-files [patterns] (set (mapcat glob/glob patterns)))
+(defn- clean-path [p]
+  (if (not (nil? p))
+    (if IS_WINDOWS
+      (string/replace p "/" "\\")
+      (string/replace p "\\" "/"))))
+
+(defn- scan-files [patterns] (set (mapcat fs/glob (map clean-path patterns))))
 (defn- log [msg & args] (println (apply format msg args)))
 (defn- find-first [coll f] (first (filter f coll)))
 (defn- to-coll [e] (if (nil? e) [] (if (sequential? e) e [e])))
@@ -95,6 +103,9 @@
         (catch Exception e2
           DEF_SAFE_MODE)))))
 
+(defn- config-to-dir [conf]
+  (clean-path (config conf :to-dir)))
+
 (defn- asciidoctor-attrs [conf]
   (let [attrs (HashMap.)]
     (if (config conf :source-highlight) (add-opt attrs :source-highlighter "coderay"))
@@ -111,7 +122,7 @@
 
 (defn- asciidoctor-config [conf]
   (let [result (HashMap.)]
-    (if-let [to-dir (config conf :to-dir)]
+    (if-let [to-dir (config-to-dir conf)]
       (do
         (fs/mkdirs to-dir)
         (add-opt result :to_dir to-dir)))
@@ -148,7 +159,7 @@
        (load-resource in)))))
 
 (defn- copy-resources [source options]
-  (let [dir (or (config options :to-dir) (fs/parent source))]
+  (let [dir (or (config-to-dir options) (fs/parent source))]
     (copy-resource RESOURCE_ASCIIDOCTOR_DEFAULT dir RESOURCE_ASCIIDOCTOR)
     (if (config options :source-highlight)
       (copy-resource RESOURCE_CODERAY_ASCIIDOCTOR dir RESOURCE_CODERAY_ASCIIDOCTOR))))
