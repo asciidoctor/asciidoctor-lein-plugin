@@ -12,15 +12,13 @@
 ; Constants
 
 (def ^:private DEF_SAFE_MODE 0)
-(def ^:private IS_WINDOWS
-  (.startsWith (System/getProperty "os.name") "Windows"))
 
 
 ; Internal API: Common
 
 (defn- clean-path [p]
   (if (not (nil? p))
-    (if IS_WINDOWS
+    (if (.startsWith (System/getProperty "os.name") "Windows")
       (string/replace p "/" "\\")
       (string/replace p "\\" "/"))))
 
