@@ -8,12 +8,12 @@
                  [org.asciidoctor/asciidoctorj "1.5.4.1" :exclusions [org.slf4j/slf4j-api]]
                  [org.slf4j/slf4j-nop "1.7.22"]]
 
-  :profiles {
+  :repositories [[ "clojars" {:sign-releases false} ]]
 
+  :profiles {
     :dev {:dependencies [[midje "1.6.3" :exclusions [org.clojure/clojure joda-time]]]
           ; Don't use the latest version: https://github.com/marick/lein-midje/issues/47
           :plugins [[lein-midje "3.1.1"]]}
-
   }
 
   :eval-in-leiningen true
