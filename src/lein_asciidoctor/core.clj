@@ -11,7 +11,7 @@
 
 ; Constants
 
-(def ^:private DEF_SAFE_MODE 0)
+(def ^:private DEF_SAFE_MODE (int 0))
 
 
 ; Internal API: Common
@@ -92,14 +92,9 @@
 
 (defn- config-safe-mode [mode]
   (try
-    (Integer/parseInt mode)
-    (catch Exception e1
-      (try (-> mode
-               (.toUpperCase)
-               (SafeMode/valueOf)
-               (.getLevel))
-        (catch Exception e2
-          DEF_SAFE_MODE)))))
+    (Integer/parseInt (str mode))
+    (catch Exception e
+      DEF_SAFE_MODE)))
 
 (defn- config-to-dir [conf]
   (clean-path (config conf :to-dir)))
@@ -135,7 +130,7 @@
 
 ; Internal API : Resources
 
-(def ^:private RESOURCE_PATH "gems/asciidoctor-1.5.2/data/stylesheets/")
+(def ^:private RESOURCE_PATH "gems/asciidoctor-1.5.4/data/stylesheets/")
 (def ^:private RESOURCE_ASCIIDOCTOR "asciidoctor.css")
 (def ^:private RESOURCE_ASCIIDOCTOR_DEFAULT "asciidoctor-default.css")
 (def ^:private RESOURCE_CODERAY_ASCIIDOCTOR "coderay-asciidoctor.css")
@@ -178,6 +173,7 @@
         (copy-resources source conf))
       (log "Processed asciidoc file: %s" source))
     (catch Throwable t
+      (.printStackTrace t)
       (log "Error: %s" (.getMessage t))
       (main/abort))))
 

@@ -80,6 +80,6 @@
 (fact "Check safe mode parameter"
   (config-safe-mode "1") => 1
   (config-safe-mode "2") => 2
-  (config-safe-mode "safe") => 1
+  (config-safe-mode "safe") => 0
   (config-safe-mode "unknown") => 0
   (config-safe-mode nil) => 0)
