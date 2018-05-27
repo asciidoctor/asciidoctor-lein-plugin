@@ -11,9 +11,8 @@
   :repositories [[ "clojars" {:sign-releases false} ]]
 
   :profiles {
-    :dev {:dependencies [[midje "1.6.3" :exclusions [org.clojure/clojure joda-time]]]
-          ; Don't use the latest version: https://github.com/marick/lein-midje/issues/47
-          :plugins [[lein-midje "3.1.1"]]}
+    :dev {:dependencies [[midje "1.9.1" :exclusions [org.clojure/clojure joda-time]]]
+          :plugins [[lein-midje "3.2.1"]]}
   }
 
   :eval-in-leiningen true
