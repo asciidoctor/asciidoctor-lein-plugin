@@ -13,4 +13,6 @@ checkouts/
 *swp
 example/generated/
 example/target/
-
+.settings/
+.project
+.classpath
