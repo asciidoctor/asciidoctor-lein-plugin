@@ -11,7 +11,7 @@
 
   :profiles {
     :dev {:dependencies [[midje "1.9.1" :exclusions [org.clojure/clojure joda-time]]]
-          :plugins [[lein-midje "3.2.1"]]}
+          :plugins [[lein-midje "3.1.1"]]}
   }
 
   :eval-in-leiningen true
