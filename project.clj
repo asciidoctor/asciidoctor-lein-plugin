@@ -6,7 +6,7 @@
 
   :dependencies [[me.raynes/fs "1.4.6" :exclusions [org.clojure/clojure]]
                  [org.asciidoctor/asciidoctorj "1.5.4.1" :exclusions [org.slf4j/slf4j-api]]
-                 [org.slf4j/slf4j-nop "1.7.22"]]
+                 [org.slf4j/slf4j-nop "1.7.25"]]
 
   :repositories [[ "clojars" {:sign-releases false} ]]
 
