@@ -2,6 +2,6 @@ language: clojure
 script: lein with-profile dev midje && lein uberjar
 jdk:
   - openjdk7
-  - openjdk6
+  - openjdk8
   - oraclejdk7
   - oraclejdk8
