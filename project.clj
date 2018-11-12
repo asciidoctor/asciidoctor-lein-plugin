@@ -9,11 +9,6 @@
 
   :repositories [[ "clojars" {:sign-releases false} ]]
 
-  :profiles {
-    :dev {:dependencies [[midje "1.9.1" :exclusions [org.clojure/clojure joda-time]]]
-          :plugins [[lein-midje "3.1.1"]]}
-  }
-
   :eval-in-leiningen true
   :pedantic? :abort
   :local-repo-classpath true)

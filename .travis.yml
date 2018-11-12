@@ -1,5 +1,5 @@
 language: clojure
-script: lein with-profile dev midje && lein uberjar
+script: lein test && lein uberjar
 jdk:
   - openjdk8
   - oraclejdk7

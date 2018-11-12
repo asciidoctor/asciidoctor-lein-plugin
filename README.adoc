@@ -158,7 +158,7 @@ Just clone current repository and try to play with link:https://github.com/ascii
 To run unit tests:
 [source,bash]
 ----
-lein with-profile dev midje
+lein test
 ----
 
 
