@@ -16,3 +16,5 @@ example/target/
 .settings/
 .project
 .classpath
+.DS_Store
+
