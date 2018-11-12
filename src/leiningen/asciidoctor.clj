@@ -12,7 +12,7 @@
     :sources           - List of glob patterns to define input sources.
     :excludes          - List of glob patterns to prevent processing of some asciidoc files.
     :to-dir            - Target directory.
-    :compact           - Remove blank lines.
+    :compact           - Remove blank lines. Possible values: true or false.
     :header-footer     - Suppress or allow the document header and footer in the output.
     :footer            - Suppress or allow the document footer in the output.
     :toc               - Add table of contents. Possible values: :auto, :left, :right.

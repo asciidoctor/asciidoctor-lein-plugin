@@ -19,11 +19,15 @@
 (defn- config [fmt]
   {:asciidoctor
    {:sources DEF_INPUT
+    :excludes []
     :to-dir DEF_OUTPUT
     :format fmt
     :doctype :book
     :extract-css true
     :source-highlight true
+    :compact false
+    :header-footer true
+    :no-title false
     :toc :left}})
 
 (defn- clean-output []
