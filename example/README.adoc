@@ -1,5 +1,9 @@
 :author: Vladislav Bauer
 :email: bauer.vlad@gmail.com
+:man-linkstyle: blue R <>
+:mansource: Asciidoctor
+:manversion: 1.0
+:manmanual: Asciidoctor
 = Example of usage lein-asciidoctor =
 
 [quote,'Winston Churchill']

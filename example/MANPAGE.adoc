@@ -1,0 +1,30 @@
+:man-linkstyle: blue R <>
+:mansource: asciidoctor-lein-plugin
+:manversion: 1.0
+:manmanual: asciidoctor-lein-plugin
+= asciidoctor(1)
+
+== NAME
+asciidoctor-lein-plugin - converts AsciiDoc source files in Clojure projects
+
+== SYNOPSIS
+*lein* asciidoctor
+
+== EXIT STATUS
+*0*::
+  Success.
+
+*1*::
+  Failure (syntax or usage error; configuration error; document processing failure; unexpected error).
+
+== BUGS
+Refer to the *asciidoctor-lein-plugin* issue tracker at https://github.com/asciidoctor/asciidoctor-lein-plugin/issues
+
+== AUTHORS
+Vladislav Bauer
+
+== RESOURCES
+*Project web site:* https://github.com/asciidoctor/asciidoctor-lein-plugin
+
+== COPYING
+Some copyright

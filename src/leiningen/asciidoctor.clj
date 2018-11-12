@@ -21,7 +21,7 @@
     :toc-levels        - Set a deep of ToC levels. Possible values: 1, 2 (default), 3, 4, 5.
     :title             - Configure the title of document.
     :no-title          - Toggles the display of a document’s title.
-    :format            - Backend output file format: :html, :html5, :docbook, :docbook45, :docbook5
+    :format            - Backend output file format: :html, :html5, :docbook, :docbook45, :docbook5, :manpage
     :doctype           - Document type: :article, :book, :manpage, :inline.
     :source-highlight  - Enable syntax hightlighter for source codes.
     :extract-css       - Extract CSS resources in the output directory.

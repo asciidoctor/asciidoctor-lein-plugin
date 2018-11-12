@@ -9,17 +9,20 @@
 
 ; Configurations
 
-(def ^:private DEF_INPUT "example/README.adoc")
+(def ^:private DEF_INPUT_DOC "example/README.adoc")
+(def ^:private DEF_INPUT_MANPAGE "example/MANPAGE.adoc")
+
 (def ^:private DEF_OUTPUT "./test-out/")
 (def ^:private DEF_OUTPUT_HTML "README.html")
 (def ^:private DEF_OUTPUT_DOCBOOK "README.xml")
+(def ^:private DEF_OUTPUT_MANPAGE "asciidoctor-lein-plugin.1")
 
 
 ; Helper functions
 
-(defn- config [fmt]
+(defn- config [in fmt]
   {:asciidoctor
-   {:sources DEF_INPUT
+   {:sources in
     :excludes []
     :to-dir DEF_OUTPUT
     :format fmt
@@ -41,11 +44,11 @@
         is-not-empty (> (fs/size path) 0)]
     (and is-existed is-file is-not-empty)))
 
-(defn- run-generator [out fmt]
+(defn- run-generator [in out fmt]
   (try
     (do
       (clean-output)
-      (a/asciidoctor (config fmt))
+      (a/asciidoctor (config in fmt))
       (and
        (file-exists? DEF_OUTPUT out)
        (file-exists? DEF_OUTPUT a/RESOURCE_ASCIIDOCTOR)
@@ -56,10 +59,11 @@
 ; Tests
 
 (t/deftest check-documentation-generator
-  (t/is (run-generator DEF_OUTPUT_HTML :html))
-  (t/is (run-generator DEF_OUTPUT_HTML :html5))
-  (t/is (run-generator DEF_OUTPUT_HTML :xhtml5))
-  (t/is (run-generator DEF_OUTPUT_DOCBOOK :docbook))
-  (t/is (run-generator DEF_OUTPUT_DOCBOOK :docbook5))
-  (t/is (run-generator DEF_OUTPUT_DOCBOOK :docbook45)))
+  (t/is (run-generator DEF_INPUT_DOC DEF_OUTPUT_HTML :html))
+  (t/is (run-generator DEF_INPUT_DOC DEF_OUTPUT_HTML :html5))
+  (t/is (run-generator DEF_INPUT_DOC DEF_OUTPUT_HTML :xhtml5))
+  (t/is (run-generator DEF_INPUT_DOC DEF_OUTPUT_DOCBOOK :docbook))
+  (t/is (run-generator DEF_INPUT_DOC DEF_OUTPUT_DOCBOOK :docbook5))
+  (t/is (run-generator DEF_INPUT_DOC DEF_OUTPUT_DOCBOOK :docbook45))
+  (t/is (run-generator DEF_INPUT_MANPAGE DEF_OUTPUT_MANPAGE :manpage)))
 
