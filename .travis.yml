@@ -2,7 +2,5 @@ language: clojure
 script: lein test && lein uberjar
 jdk:
   - openjdk8
-  - openjdk9
-  - openjdk10
   - openjdk11
 
