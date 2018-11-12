@@ -7,8 +7,6 @@
   :dependencies [[me.raynes/fs "1.4.6" :exclusions [org.clojure/clojure]]
                  [org.asciidoctor/asciidoctorj "1.5.8.1"]]
 
-  :repositories [[ "clojars" {:sign-releases false} ]]
-
   :eval-in-leiningen true
   :pedantic? :abort
   :local-repo-classpath true)
