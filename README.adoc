@@ -88,7 +88,7 @@ Each configuration parameter could be a keyword (ex: `:sources`) or a string (ex
 
 *:no-title*:: Toggles the display of a document’s title.
 
-*:format*:: Backend output file format: `:html5`, `:docbook45` and `:docbook5` supported out of the box. You can also use the backend alias names `:html` (aliased to `:html5`) or `:docbook` (aliased to `:docbook5`). Defaults to `:html`. It is also possible to use keywords or strings as values: `:html` and `"html"` is the same.
+*:format*:: Backend output file format: `:html5`, `:docbook45`, `:docbook5` and `:manpage` supported out of the box. You can also use the backend alias names `:html` (aliased to `:html5`) or `:docbook` (aliased to `:docbook5`). Defaults to `:html`. It is also possible to use keywords or strings as values: `:html` and `"html"` is the same.
 
 *:doctype*:: Document type: `:article`, `:book`, `:manpage` or `:inline`. Sets the root element when using the docbook format and the style class on the HTML body element when using the html format. The `:book` document type allows multiple level-0 section titles in a single document. The `:manpage` document type enables parsing of metadata necessary to produce a manpage. The `:inline` document type allows the content of a single paragraph to be formatted and returned without wrapping it in a containing element. Defaults to `:article`.
 
