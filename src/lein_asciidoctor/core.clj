@@ -1,4 +1,5 @@
 (ns ^{:author "Vladislav Bauer"}
+    ^{:doc "Plugin source code"}
   lein-asciidoctor.core
   (:import (org.asciidoctor Asciidoctor$Factory Options Attributes SafeMode)
            (java.util HashMap))

@@ -1,4 +1,5 @@
 (ns ^{:author "Vladislav Bauer"}
+    ^{:doc "Main entry point for plugin"}
   leiningen.asciidoctor
   (:require [lein-asciidoctor.core :as core]))
 

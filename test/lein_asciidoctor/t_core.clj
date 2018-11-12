@@ -1,4 +1,5 @@
 (ns ^{:author "Vladislav Bauer"}
+    ^{:doc "Functional tests for plugin"}
   lein-asciidoctor.t-core
   (:require [lein-asciidoctor.core :as a]
             [me.raynes.fs :as fs]

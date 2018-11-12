@@ -1,4 +1,5 @@
 (ns ^{:author "Vladislav Bauer"}
+    ^{:doc "Extra Leiningen hooks"}
   lein-asciidoctor.plugin
   (:require [leiningen.compile]
             [robert.hooke :as hooke]
