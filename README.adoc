@@ -5,7 +5,6 @@
 image:https://clojars.org/lein-asciidoctor/latest-version.svg["Latest version", link="https://clojars.org/lein-asciidoctor"]
 
 image:https://travis-ci.org/asciidoctor/asciidoctor-lein-plugin.svg?branch=master["Build Status", link="https://travis-ci.org/asciidoctor/asciidoctor-lein-plugin"]
-image:http://jarkeeper.com/vbauer/asciidoctor-lein-plugin/status.png["Dependencies Status", link="http://jarkeeper.com/vbauer/asciidoctor-lein-plugin"]
 
 
 == Introduction ==
