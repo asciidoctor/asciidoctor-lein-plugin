@@ -130,7 +130,7 @@
 
 ; Internal API : Resources
 
-(def ^:public RESOURCE_PATH "gems/asciidoctor-1.5.6.1/data/stylesheets/")
+(def ^:public RESOURCE_PATH "gems/asciidoctor-1.5.8/data/stylesheets/")
 (def ^:public RESOURCE_ASCIIDOCTOR "asciidoctor.css")
 (def ^:public RESOURCE_ASCIIDOCTOR_DEFAULT "asciidoctor-default.css")
 (def ^:public RESOURCE_CODERAY_ASCIIDOCTOR "coderay-asciidoctor.css")
