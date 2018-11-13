@@ -2,10 +2,8 @@
 :email: bauer.vlad@gmail.com
 = lein-asciidoctor =
 
-image:https://clojars.org/lein-asciidoctor/latest-version.svg["Latest version", link="https://clojars.org/lein-asciidoctor"]
-
 image:https://travis-ci.org/asciidoctor/asciidoctor-lein-plugin.svg?branch=master["Build Status", link="https://travis-ci.org/asciidoctor/asciidoctor-lein-plugin"]
-
+image:https://img.shields.io/clojars/v/lein-asciidoctor.svg["Clojars Project" link="https://clojars.org/lein-asciidoctor"]
 
 == Introduction ==
 
@@ -25,7 +23,8 @@ To enable lein-asciidoctor for your project, put the following line in the :plug
 [source,clojure]
 .project.clj
 ----
-:plugins [[lein-asciidoctor "0.1.17"]]
+; Use latest version instead of "X.X.X"
+:plugins [[lein-asciidoctor "X.X.X"]]
 ----
 
 
